@@ -5,15 +5,19 @@ const CustomButton = ({
   color = 'primary',
   rounded = false,
   square = false,
+  hyperlink = '#',
   text = 'Click Me',
-  onClick = () => {}, // New: event callback prop
 }) => {
   const borderRadius = rounded ? '50px' : square ? '0px' : '8px';
+
+  const handleClick = () => {
+    window.location.href = hyperlink;
+  };
 
   return (
     <Button
       variant="contained"
-      onClick={onClick}
+      onClick={handleClick}
       sx={{
         backgroundColor: color,
         borderRadius: borderRadius,
