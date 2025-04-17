@@ -1,7 +1,14 @@
 import React from 'react';
 import Button from '@mui/material/Button';
 
-const CustomButton = ({ color = 'primary', rounded = false, square = false, text = 'Click Me', onClick = () => {} }) => {
+const CustomButton = ({ 
+    color = 'primary', 
+    rounded = false, 
+    square = false, 
+    text = 'Click Me', 
+    onClick = () => {} 
+}) => {
+
   const borderRadius = rounded ? '50px' : square ? '0px' : '8px';
 
   return (

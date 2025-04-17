@@ -1,7 +1,20 @@
 import React from 'react';
 import { TextField, Typography, Box } from '@mui/material';
 
-const CustomTextBox = ({ fontSize = '1rem', font = 'Arial', bold = false, height = '40px', width = '300px', color = 'black', error = false, errorMessage = '', value, onChange, onBlur }) => {
+const CustomTextBox = ({ 
+  fontSize = '1rem', 
+  font = 'Arial', 
+  bold = false, 
+  height = '40px', 
+  width = '300px', 
+  color = 'black', 
+  error = false, 
+  errorMessage = '', 
+  value, 
+  onChange, 
+  onBlur 
+}) => {
+  
   return (
     <Box sx={{ width, marginBottom: '1rem' }}>
       {error && errorMessage && (
