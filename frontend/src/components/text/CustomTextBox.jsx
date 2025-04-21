@@ -22,11 +22,8 @@ const CustomTextBox = ({
           {errorMessage}
         </Typography>
       )}
-      <TextField value={value} onChange={onChange} onBlur={onBlur} fullWidth error={error} variant="outlined"
-      //TODO: Need to replace InputProps because it will be removed in a coming release for mui
-        InputProps={{
-          sx: { fontSize, fontFamily: font, fontWeight: bold ? 'bold' : 'normal', color, height },
-        }}
+      <TextField value={value} onChange={onChange} onBlur={onBlur} fullWidth error={error} variant="outlined" 
+        sx={{ fontSize, fontFamily: font, fontWeight: bold ? 'bold' : 'normal', color, height }}
       />
     </Box>
   );
