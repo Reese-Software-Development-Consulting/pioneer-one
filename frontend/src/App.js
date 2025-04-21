@@ -1,6 +1,7 @@
 import './styles/App.css';
 import React from 'react';
 import Footer from './components/pageComponents/LinkFooter';
+import LinkFooter from './components/pageComponents/LinkFooter';
 
 const App = () => {
   return (
@@ -12,7 +13,7 @@ const App = () => {
       </main>
 
       {/* Footer */}
-      <Footer
+      <LinkFooter
         backgroundColor="#111"
         iconColor="#aaa"
         hoverColor="#fff"
