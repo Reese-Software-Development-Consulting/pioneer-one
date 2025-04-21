@@ -1,5 +1,8 @@
 import React from 'react';
 import BusinessFooter from './components/pageComponents/BusinessFooter';
+import CustomImage from './components/images/CustomImage';
+import SpinningImage from './components/images/CustomSpinningImage';
+import mickey from './assets/test_images/mickey_mouse.png';
 
 function App() {
   return (
@@ -14,7 +17,17 @@ function App() {
       <main style={{ flex: 1, padding: '2rem' }}>
         <h1>Welcome to Our Site!</h1>
         <p>This is a demo showcasing our custom business footer.</p>
+
+        {/* Option 2: Responsive with aspect ratio */}
+        <CustomImage src={mickey} responsive useAspectRatio aspectRatio="4/3" /> 
+
+        {/* Option 3: Responsive with fluid breakpoints */}
+        <CustomImage src={mickey} responsive />
+        <SpinningImage src={mickey} responsive useAspectRatio aspectRatio='4/3'/>
+        
       </main>
+
+      
 
       {/* Footer stays at the bottom */}
       <BusinessFooter
