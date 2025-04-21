@@ -1,6 +1,7 @@
 import React from 'react';
 import BusinessFooter from './components/pageComponents/BusinessFooter';
 import CustomImage from './components/images/CustomImage';
+import SpinningImage from './components/images/CustomSpinningImage';
 import mickey from './assets/test_images/mickey_mouse.png';
 
 function App() {
@@ -22,6 +23,8 @@ function App() {
 
         {/* Option 3: Responsive with fluid breakpoints */}
         <CustomImage src={mickey} responsive />
+        <SpinningImage src={mickey} responsive useAspectRatio aspectRatio='4/3'/>
+        
       </main>
 
       
