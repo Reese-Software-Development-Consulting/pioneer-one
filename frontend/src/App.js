@@ -1,24 +1,30 @@
-import SimpleHeader from './components/pageComponents/SimpleHeader';
+import TitleHeader from './components/pageComponents/TitleHeader';
 import logo from './assets/test_images/mickey_mouse.png';
 
 function App() {
   return (
-    <SimpleHeader
-      profileImage={logo}
-      title="Pita Wheel"
-      backgroundColor="#1E1E1E"
-      font="Montserrat, sans-serif"
-      fontSize="20px"
-      navAlignment="center"
-      textColor="#FFFFFF"
-      hoverColor="#FFD700"
-      height="80px"
-      navLinks={[
-        { label: 'Home', href: '#' },
-        { label: 'Menu', href: '#' },
-        { label: 'Jobs', href: '#' }
-      ]}
-    />
+<TitleHeader
+  profileImage={logo}
+  companyName="Wally Mart"
+  motto="Always low prices. Always."
+  headerBgColor="#0047BA"
+  headerTextColor="#FFFFFF"
+  headerFont="Segoe UI, sans-serif"
+  headerFontSize="20px"
+  navBgColor="#F3F4F6"
+  navTextColor="#333333"
+  navFont="Helvetica Neue, sans-serif"
+  navFontSize="15px"
+  hoverColor="#0071DC"
+  navLinks={[
+    { label: 'Departments', href: '#' },
+    { label: 'Services', href: '#' },
+    { label: 'Pharmacy Delivery', href: '#' },
+    { label: "Mother's Day", href: '#' },
+    { label: 'Dinner Solutions', href: '#' },
+    { label: 'Registry', href: '#' },
+  ]}
+/>
   );
 }
 
