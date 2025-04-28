@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const SimpleHeader = ({
   profileImage,
@@ -19,23 +20,72 @@ const SimpleHeader = ({
   };
 
   return (
-    <header style={{ display: "flex", alignItems: "center", justifyContent: "space-between", backgroundColor, padding: "0 40px", height, fontFamily: font,
-        color: textColor, fontSize, overflow: "hidden" }}
+    <header
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        backgroundColor,
+        padding: "0 40px",
+        height,
+        fontFamily: font,
+        color: textColor,
+        fontSize,
+        overflow: "hidden",
+      }}
     >
       {/* Left: Logo + Title */}
-      <div style={{ display: "flex", alignItems: "center", gap: "10px", height: "100%" }} >
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "10px",
+          height: "100%",
+        }}
+      >
         {profileImage && (
-          <img src={profileImage} alt="logo" style={{ height: "80%", maxHeight: "80%", width: "auto", objectFit: "contain" }} />
+          <img
+            src={profileImage}
+            alt="logo"
+            style={{
+              height: "80%",
+              maxHeight: "80%",
+              width: "auto",
+              objectFit: "contain",
+            }}
+          />
         )}
         {title && <strong style={{ fontSize }}>{title}</strong>}
       </div>
 
       {/* Center: Navigation Links */}
-      <nav style={{ flex: 1, display: "flex", justifyContent: justifyMap[navAlignment] }} >
-        <ul style={{ display: "flex", listStyle: "none", gap: "50px", padding: 0, margin: 0 }} >
+      <nav
+        style={{
+          flex: 1,
+          display: "flex",
+          justifyContent: justifyMap[navAlignment],
+        }}
+      >
+        <ul
+          style={{
+            display: "flex",
+            listStyle: "none",
+            gap: "50px",
+            padding: 0,
+            margin: 0,
+          }}
+        >
           {navLinks.map((link, index) => (
             <li key={index}>
-              <a href={link.href} style={{ color: textColor, textDecoration: "none", fontWeight: "bold", fontSize, transition: "color 0.3s, border-bottom 0.3s", }}
+              <Link
+                to={link.href}
+                style={{
+                  color: textColor,
+                  textDecoration: "none",
+                  fontWeight: "bold",
+                  fontSize,
+                  transition: "color 0.3s, border-bottom 0.3s",
+                }}
                 onMouseOver={(e) => {
                   e.target.style.color = hoverColor;
                   e.target.style.borderBottom = `2px solid ${hoverColor}`;
@@ -46,7 +96,7 @@ const SimpleHeader = ({
                 }}
               >
                 {link.label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
