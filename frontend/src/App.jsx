@@ -4,6 +4,7 @@ import MainLayout from './layout/MainLayout';
 import Home from './pages/Home';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import './styles/Fonts.css'
 
 function App() {
   return (

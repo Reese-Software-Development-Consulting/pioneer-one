@@ -31,7 +31,7 @@ const MainLayout = ({ children }) => {
   ];
 
   const isLinkBarVisible = true; // or pull from somewhere dynamic
-  const headerHeight = 80; // same as your headerHeight prop
+  const headerHeight = 100; // same as your headerHeight prop
   const linkBarHeight = isLinkBarVisible ? 40 : 0;
 
   const totalHeaderHeight = headerHeight + linkBarHeight; // 120px if both are showing
@@ -42,6 +42,7 @@ const MainLayout = ({ children }) => {
         title="Carl's Construction"
         titleFont="'Poppins', sans-serif"
         titleColor="#000"
+        titleTextSize="25px"
         profileImage={ProfileImage}
         locations={locations}
         phoneNumbers={phoneNumbers}
@@ -52,9 +53,10 @@ const MainLayout = ({ children }) => {
         navItems={navItems}
         navBarBackgroundColor="white"
         navBarTextColor="black"
-        navBarItemFont="'Roboto', sans-serif"
-        navBarItemSpacing="2rem"
+        navBarItemFont="'Poppins', sans-serif"
+        navBarItemSpacing="6rem"
         navBarItemHoverColor="#FFB400"
+        navBarTextSize="20px"
         isSticky={true}
         navLinkPosition={NavLinkPositionEnum.CENTER}
         headerHeight={`${headerHeight}px`}
@@ -65,7 +67,7 @@ const MainLayout = ({ children }) => {
       </main>
 
       <LinkFooter
-        backgroundColor="white"
+        backgroundColor="black"
         iconColor="black"
         hoverColor="#FFB400"
         icons={socialLinks}
