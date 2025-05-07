@@ -1,11 +1,43 @@
-/* Google Fonts */
+/* Google Fonts - Core */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
 
-/* Example fallback fonts can be defined in classes or globally */
+/* Elegant Google Display Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Marcellus&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Prata&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Domine:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Volkhov:wght@400;700&display=swap');
+
+/* Additional Display Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@400;700&display=swap');
+
+/* Root Variables for Easy Reference */
 :root {
   --font-poppins: 'Poppins', sans-serif;
   --font-roboto: 'Roboto', sans-serif;
   --font-montserrat: 'Montserrat', sans-serif;
+
+  --font-playfair: 'Playfair Display', serif;
+  --font-great-vibes: 'Great Vibes', cursive;
+  --font-cinzel: 'Cinzel', serif;
+  --font-libre-baskerville: 'Libre Baskerville', serif;
+  --font-cormorant: 'Cormorant Garamond', serif;
+  --font-marcellus: 'Marcellus', serif;
+  --font-prata: 'Prata', serif;
+  --font-abril: 'Abril Fatface', cursive;
+  --font-domine: 'Domine', serif;
+  --font-volkhov: 'Volkhov', serif;
+
+  --font-fjalla: 'Fjalla One', sans-serif;
+  --font-alfa-slab: 'Alfa Slab One', serif;
+  --font-josefin-slab: 'Josefin Slab', serif;
 }
