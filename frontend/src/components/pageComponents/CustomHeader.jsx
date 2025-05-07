@@ -21,6 +21,7 @@ const CustomHeader = ({
   isLinkBarVisible = true,
   topLinkBackgroundColor = '#000',
   topLinkTextColor = '#fff',
+  topLinkSocialIconHoverColor = '#FFB400',
   navItems = [],
   navBarBackgroundColor = '#fff',
   navBarTextColor = '#000',
@@ -84,7 +85,7 @@ const CustomHeader = ({
             ))}
           </Box>
 
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, paddingRight: '10px' }}>
             {socialLinks.map(({ platform, href }, idx) => {
               const IconComponent = iconMap[platform];
               if (!IconComponent) return null;
@@ -95,7 +96,7 @@ const CustomHeader = ({
                   href={href}
                   label={platform}
                   color={topLinkTextColor}
-                  hoverColor="#FFB400"
+                  hoverColor={topLinkSocialIconHoverColor}
                 />
               );
             })}

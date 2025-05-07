@@ -23,7 +23,8 @@ const CustomFooter = ({
   addressLine2 = '',
   showBottomTabBar = true,
   bottomTabBarBackgroundColor = '#000',
-  socialLinks = []
+  socialLinks = [],
+  socialHoverColor = '#FFB400'
 }) => {
 
   const handleScrollToTop = () => {
@@ -100,6 +101,7 @@ const CustomFooter = ({
       IconComponent={IconComponent}
       href={href}
       label={platform}
+      hoverColor={socialHoverColor}
     />
   );
 })}
