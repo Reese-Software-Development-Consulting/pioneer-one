@@ -1,51 +1,105 @@
-import React from 'react';
-import CustomBodyCard from '../components/pageComponents/CustomBodyCard';
-import CustomBodyLayout from '../components/pageComponents/CustomBodyComponent';
-import LayoutTypeEnum from '../enums/LayoutTypeEnum';
-import ImagePositionEnum from '../enums/ImagePositionEnum';
+import React from 'react'
+import Theme from '../enums/ColorThemes'
 
-import HomeImage from '../assets/test_images/CarlsConstructionhome.jpeg';
-import ResidentialImage from '../assets/test_images/carlsconstructionfamily.jpeg';
+import BodySection from '../components/pageComponents/body/BodySection'
+import ParagraphSection from '../components/text/ParagraphSection'
+import Image from '../components/images/CustomImage'
+import PageHeader from '../components/pageComponents/PageHeader'
+
+import Position from '../enums/PositionEnum'
+import BodySectionType from '../enums/BodySectionTypes'
+
+import HeaderVideo from '../assets/test_images/compressedVideo.mp4'
+import HomeImage from '../assets/test_images/CarlsConstructionhome.jpeg'
+import ResidentialImage from '../assets/test_images/carlsconstructionfamily.jpeg'
 import CommercialImage from '../assets/test_images/carlsConstructionCommercial.jpeg'
 
 const Home = () => {
   return (
-    <CustomBodyLayout
-      layoutType={LayoutTypeEnum.VERTICAL}
-      BodyBackgroundColor="white"
-      BodyBackgroundImage=""
-    >
-      <CustomBodyCard
-        CardWidth="90%"
-        imageSrc={HomeImage} imageAlt="Carl's Construction working on a project" imageWidth="800px" imageHeight="600px" imageMaxWidth="1200px"
-        titleText="Building Dreams, One Brick at a Time" titleTextSize="32px" titleBold={true} titleColor="#333"
-        textText="At Carl's Construction, we bring visions to life with precision, craftsmanship, and dedication. With over two decades of experience in residential, commercial, and industrial 
-                  construction, we are committed to delivering projects that exceed expectations. From groundbreaking to final inspection, our team works closely with clients to ensure that 
-                  every detail reflects quality and care. Whether building a new home, expanding a business space, or revitalizing an existing structure, Carl’s Construction stands for 
-                  integrity, reliability, and excellence at every stage of the process. Trust us to build the foundation for your future — strong, lasting, and crafted with pride."
-        textTextSize="18px" textColor="#555" textBold={false}
-        ImagePosition={ImagePositionEnum.LEFT}
+    <>
+      <PageHeader
+        titleText="Carl's Construction"
+        titleFont="Georgia, serif"
+        titleColor="#fff"
+        titleBold={true}
+        video={HeaderVideo}
+        height="500px"
       />
-      <CustomBodyCard
-        CardWidth="90%"
-        imageSrc={ResidentialImage} imageAlt="Residential Construction Project" imageWidth="400px" imageHeight="300px" imageMaxWidth="1200px"
-        titleText="Residential Construction You Can Trust" titleTextSize="32px" titleBold={true} titleColor="#333"
-        textText="From custom family homes to complete renovations, Carl’s Construction brings craftsmanship, dedication, and attention to detail to every residential project. We work closely 
-                  with you to build homes that match your dreams — strong, beautiful, and built to last."
-        textTextSize="18px" textColor="#555" textBold={false}
-        ImagePosition={ImagePositionEnum.RIGHT}
+      <BodySection
+        type={BodySectionType.DOUBLE}
+        leftContent={
+          <ParagraphSection
+            titleText="CRACK FILLING"
+            paragraphText="Cracks are where bad things start to happen. Water sneaks in and weakens your parking lot’s base, causing damage and costly repairs. Carl’s Construction fills those cracks to protect your surface and extend its lifespan."
+            buttonText="SEE OUR WORK"
+            justifyContent={Position.LEFT}
+            buttonHyperlink="/about"
+            buttonColor={Theme.Modern.Secondary1}
+            dividerColor={Theme.Modern.Secondary1}
+          />
+        }
+        rightContent={
+          <Image
+            src={HomeImage}
+            alt="Excavator at work"
+            width="100%"
+            height="300px"
+            borderRadius="16px"
+            objectFit="cover"
+          />
+        }
       />
-      <CustomBodyCard
-        CardWidth="90%"
-        imageSrc={CommercialImage} imageAlt="Commercial Construction Project" imageWidth="400px" imageMaxWidth="1200px"
-        titleText="Commercial Construction" titleTextSize="32px" titleBold={true} titleColor="#333"
-        textText="Whether building office spaces, retail centers, or warehouses, Carl’s Construction delivers commercial projects with efficiency and precision. We understand the importance 
-                  of strict timelines and budgets, and we are committed to helping your business grow without unnecessary delays. Our expert team manages every phase of the construction 
-                  process — from planning and permitting to final inspection — to ensure high-quality, on-time, and cost-effective results."
-        textTextSize="18px" textColor="#555" textBold={false}
-        ImagePosition={ImagePositionEnum.RIGHT}
-       />
-</CustomBodyLayout>
+
+      <BodySection
+        type={BodySectionType.DOUBLE}
+        leftContent={
+          <Image
+            src={ResidentialImage}
+            alt="Residential paving project"
+            width="100%"
+            height="300px"
+            borderRadius="16px"
+            objectFit="cover"
+          />
+        }
+        rightContent={
+          <ParagraphSection
+            titleText="RESIDENTIAL SERVICES"
+            paragraphText="Carl’s Construction helps homeowners with expert paving, driveway repair, and property enhancement solutions. We bring professionalism and care to every residential project."
+            buttonText="LEARN MORE"
+            justifyContent={Position.LEFT}
+            buttonHyperlink="/about"
+            buttonColor={Theme.Modern.Secondary1}
+            dividerColor={Theme.Modern.Secondary1}
+          />
+        }
+      />
+
+      <BodySection
+        type={BodySectionType.DOUBLE}
+        leftContent={
+          <ParagraphSection
+            titleText="COMMERCIAL PROJECTS"
+            paragraphText="From retail centers to office parks, Carl’s Construction delivers reliable commercial paving, grading, and lot maintenance to keep your business looking its best."
+            buttonText="CONTACT US"
+            justifyContent={Position.LEFT}
+            buttonHyperlink="/contact"
+            buttonColor={Theme.Modern.Secondary1}
+            dividerColor={Theme.Modern.Secondary1}
+          />
+        }
+        rightContent={
+          <Image
+            src={CommercialImage}
+            alt="Commercial construction site"
+            width="100%"
+            height="300px"
+            borderRadius="16px"
+            objectFit="cover"
+          />
+        }
+      />
+    </>
   );
 };
 

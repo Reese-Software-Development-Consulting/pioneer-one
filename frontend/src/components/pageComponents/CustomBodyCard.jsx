@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, CardContent, Box } from '@mui/material';
 import CustomImage from '../images/CustomImage';
 import CustomText from '../text/CustomText';
-import ImagePositionEnum from '../../enums/ImagePositionEnum';
+import ImagePositionEnum from '../../enums/PositionEnum';
 
 const CustomBodyCard = ({
     // Card styles
