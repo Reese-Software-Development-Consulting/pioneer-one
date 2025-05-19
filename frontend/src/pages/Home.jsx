@@ -7,6 +7,7 @@ import Image from '../components/images/CustomImage'
 import PageHeader from '../components/pageComponents/PageHeader'
 import Stepper from '../components/pageComponents/Stepper'
 import SimpleStepper from '../components/pageComponents/SimpleStepper'
+import VideoComponent from '../components/images/VideoComponent'
 
 import Position from '../enums/PositionEnum'
 import BodySectionType from '../enums/BodySectionTypes'
@@ -219,6 +220,17 @@ const Home = () => {
             ]}
           />
         }
+      />
+      <BodySection 
+        type={BodySectionType.SINGLE}
+        leftContent={
+          <VideoComponent
+            youtubeUrl="https://www.youtube.com/watch?v=_UvtNbOp2Zs"
+            width="800px"
+            height="450px"
+            borderRadius="16px"
+          />
+        } 
       />
 </>
   );
