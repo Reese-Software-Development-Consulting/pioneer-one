@@ -34,7 +34,8 @@ const ParagraphSection = ({
   titlePadding = '16px 0',
   paragraphPadding = '16px 0',
   buttonMarginTop = '24px',
-  justifyContent = 'left', // new prop
+  justifyContent = 'left',
+  showButton = true,
 }) => {
   const alignment = justifyMap[justifyContent] || 'flex-start';
 
@@ -88,28 +89,30 @@ const ParagraphSection = ({
         {paragraphText}
       </Typography>
 
-      <Button
-        variant="contained"
-        sx={{
-          backgroundColor: buttonColor,
-          height: buttonHeight,
-          width: buttonWidth,
-          marginTop: buttonMarginTop,
-          fontFamily: buttonTextFont,
-          fontSize: buttonTextSize,
-          color: buttonTextColor,
-          fontWeight: 'bold',
-          textTransform: 'uppercase',
-          alignSelf: alignment,
-          '&:hover': {
+      {showButton && (
+        <Button
+          variant="contained"
+          sx={{
             backgroundColor: buttonColor,
-            opacity: 0.9,
-          },
-        }}
-        href={buttonHyperlink}
-      >
-        {buttonText}
-      </Button>
+            height: buttonHeight,
+            width: buttonWidth,
+            marginTop: buttonMarginTop,
+            fontFamily: buttonTextFont,
+            fontSize: buttonTextSize,
+            color: buttonTextColor,
+            fontWeight: 'bold',
+            textTransform: 'uppercase',
+            alignSelf: alignment,
+            '&:hover': {
+              backgroundColor: buttonColor,
+              opacity: 0.9,
+            },
+          }}
+          href={buttonHyperlink}
+        >
+          {buttonText}
+        </Button>
+      )}
     </Box>
   );
 };

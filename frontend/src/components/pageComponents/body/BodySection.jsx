@@ -20,6 +20,8 @@ const BodySection = ({
         sx={{
           width: '100%',
           padding,
+          display: 'flex',
+          justifyContent: 'center'
         }}
       >
         {leftContent}
