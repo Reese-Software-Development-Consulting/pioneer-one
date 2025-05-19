@@ -6,6 +6,7 @@ import ParagraphSection from '../components/text/ParagraphSection'
 import Image from '../components/images/CustomImage'
 import PageHeader from '../components/pageComponents/PageHeader'
 import Stepper from '../components/pageComponents/Stepper'
+import SimpleStepper from '../components/pageComponents/SimpleStepper'
 
 import Position from '../enums/PositionEnum'
 import BodySectionType from '../enums/BodySectionTypes'
@@ -182,6 +183,38 @@ const Home = () => {
                 buttonMarginTop: '24px',
                 justifyContent: 'right',
                 showButton: false
+              },
+            ]}
+          />
+        }
+      />
+
+      <BodySection
+        type={BodySectionType.SINGLE}
+        leftContent={
+          <SimpleStepper
+            height="300px"
+            width="70%"
+            backgroundColor={Theme.Modern.Background}
+            color={Theme.Modern.Secondary1}
+            elements={[
+              {
+                textFont: 'Georgia',
+                textSize: '1.5rem',
+                textColor: '#444',
+                text: 'Step 1',
+              },
+              {
+                textFont: 'Georgia',
+                textSize: '1.5rem',
+                textColor: '#444',
+                text: 'Step 2',
+              },
+              {
+                textFont: 'Georgia',
+                textSize: '1.5rem',
+                textColor: '#444',
+                text: 'Step 3',
               },
             ]}
           />
