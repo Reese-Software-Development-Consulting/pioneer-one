@@ -2,6 +2,7 @@ import React from 'react'
 import Theme from '../enums/ColorThemes'
 
 import BodySection from '../components/pageComponents/body/BodySection'
+import BodyGrid from '../components/pageComponents/body/BodyGrid'
 import ParagraphSection from '../components/text/ParagraphSection'
 import Image from '../components/images/CustomImage'
 import PageHeader from '../components/pageComponents/PageHeader'
@@ -16,6 +17,13 @@ import HeaderVideo from '../assets/test_images/compressedVideo.mp4'
 import HomeImage from '../assets/test_images/CarlsConstructionhome.jpeg'
 import ResidentialImage from '../assets/test_images/carlsconstructionfamily.jpeg'
 import CommercialImage from '../assets/test_images/carlsConstructionCommercial.jpeg'
+
+const paragraphData = Array.from({ length: 10 }).map((_, i) => ({
+  titleText: `Section Title ${i + 1}`,
+  paragraphText: `This is a description for paragraph section number ${i + 1}. It explains the value and context of the section with placeholder text.`,
+  buttonHyperlink: `#section-${i + 1}`,
+  width: '200px'
+}));
 
 const Home = () => {
   return (
@@ -232,6 +240,20 @@ const Home = () => {
           />
         } 
       />
+      <BodyGrid rows={2} columns={3} gap="24" padding="40px" width="100%" itemWidth="200px">
+        {paragraphData.map((item, index) => (
+          <ParagraphSection
+            key={index}
+            titleText={item.titleText}
+            paragraphText={item.paragraphText}
+            buttonHyperlink={item.buttonHyperlink}
+            backgroundColor="#ffffff"
+            justifyContent="left"
+            height="100%"
+            width="250px"
+          />
+        ))}
+      </BodyGrid>
 </>
   );
 };

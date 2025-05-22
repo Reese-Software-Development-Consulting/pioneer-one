@@ -10,7 +10,7 @@ const justifyMap = {
 
 const ParagraphSection = ({
   height = 'auto',
-  width = '100%',
+  width = 'auto',
   backgroundColor = '#fff',
   titleText = '',
   titleTextFont = 'Arial',
