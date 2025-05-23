@@ -18,8 +18,14 @@ const CustomHyperLinkButton = ({
 
   return (
     <Button variant="contained" onClick={handleClick}
-      sx={{ height: height, width: width, backgroundColor: color, borderRadius: borderRadius, padding: '12px 24px',
-        fontSize: '1rem', maxWidth: '90vw', textTransform: 'none',
+      sx={{ height: height, 
+        width: width, 
+        backgroundColor: color, 
+        borderRadius: borderRadius, 
+        padding: '12px 24px',
+        fontSize: '1rem', 
+        maxWidth: '90vw', 
+        textTransform: 'none',
         '@media (min-width: 600px)': { fontSize: '1.1rem', maxWidth: '300px' }
       }}
     >

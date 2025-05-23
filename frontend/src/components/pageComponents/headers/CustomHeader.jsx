@@ -1,22 +1,5 @@
 import React, { useState } from 'react';
-import {
-  AppBar,
-  Toolbar,
-  Typography,
-  Box,
-  Avatar,
-  Button,
-  Menu,
-  MenuItem,
-  IconButton,
-  Drawer,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemText,
-  useMediaQuery,
-  useTheme
-} from '@mui/material';
+import { AppBar, Toolbar, Typography, Box, Avatar, Button, Menu, MenuItem, IconButton, Drawer, List, ListItem, ListItemButton, ListItemText, useMediaQuery, useTheme } from '@mui/material';
 import { Link, useLocation } from 'react-router-dom';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PhoneIcon from '@mui/icons-material/Phone';
@@ -25,7 +8,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 
 import { iconMap } from '../../../utils/iconRegistry';
 import SocialIconLink from '../../buttons/SocialIconLink';
-import NavLinkPositionEnum from '../../../enums/NavLinkPositionEnum';
+import NavLinkPositionEnum from '../../../enums/PositionEnum';
 
 const CustomHeader = ({
   title = '',

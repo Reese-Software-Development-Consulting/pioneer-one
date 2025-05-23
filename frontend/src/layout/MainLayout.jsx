@@ -1,7 +1,7 @@
 import React from "react";
 import CustomHeader from "../components/pageComponents/headers/CustomHeader";
 import CustomFooter from "../components/pageComponents/footers/CustomFooter";
-import NavLinkPositionEnum from "../enums/NavLinkPositionEnum";
+import NavLinkPositionEnum from "../enums/PositionEnum";
 import ColorThemes from "../enums/ColorThemes";
 
 import ProfileImage from "../assets/test_images/profile-image.jpg";
