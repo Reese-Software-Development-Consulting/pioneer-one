@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Typography, IconButton, Fade } from '@mui/material';
+import { Box, Typography, IconButton, Fade, useMediaQuery, useTheme } from '@mui/material';
 import { KeyboardArrowUp } from '@mui/icons-material';
 import { iconMap } from '../../../utils/iconRegistry';
 import SocialIconLink from '../../buttons/SocialIconLink';
@@ -27,6 +27,9 @@ const CustomFooter = ({
   socialHoverColor = '#FFB400'
 }) => {
 
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
   const handleScrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -48,7 +51,16 @@ const CustomFooter = ({
         zIndex: 10
       }}
     >
-      <Box display="flex" justifyContent="space-around" alignItems="center" flex={1} p={2}>
+      <Box
+        display="flex"
+        flexDirection={isMobile ? 'column' : 'row'}
+        justifyContent="space-around"
+        alignItems="center"
+        flex={1}
+        p={2}
+        textAlign={isMobile ? 'center' : 'left'}
+        gap={isMobile ? 2 : 0}
+      >
         <Box>
           <Typography variant="subtitle1" fontWeight={700}>
             {isCompanyNameBold ? <b>{companyName}</b> : companyName}
@@ -58,7 +70,17 @@ const CustomFooter = ({
         </Box>
 
         {companyLogo && (
-          <Box component="img" src={companyLogo} alt="Company Logo" sx={{ height: logoHeight, width: logoWidth, position: 'absolute' }} />
+          <Box
+            component="img"
+            src={companyLogo}
+            alt="Company Logo"
+            sx={{
+              height: logoHeight,
+              width: logoWidth,
+              my: isMobile ? 2 : 0,
+              position: isMobile ? 'relative' : 'absolute'
+            }}
+          />
         )}
 
         <Box>
@@ -89,22 +111,23 @@ const CustomFooter = ({
           display="flex"
           justifyContent="center"
           alignItems="center"
+          flexWrap="wrap"
           sx={{ backgroundColor: bottomTabBarBackgroundColor, py: 1 }}
         >
           {socialLinks.map(({ platform, href }) => {
-  const IconComponent = iconMap[platform];
-  if (!IconComponent) return null;
+            const IconComponent = iconMap[platform];
+            if (!IconComponent) return null;
 
-  return (
-    <SocialIconLink
-      key={platform}
-      IconComponent={IconComponent}
-      href={href}
-      label={platform}
-      hoverColor={socialHoverColor}
-    />
-  );
-})}
+            return (
+              <SocialIconLink
+                key={platform}
+                IconComponent={IconComponent}
+                href={href}
+                label={platform}
+                hoverColor={socialHoverColor}
+              />
+            );
+          })}
         </Box>
       )}
 

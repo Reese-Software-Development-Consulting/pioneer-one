@@ -17,6 +17,7 @@ import HeaderVideo from '../assets/test_images/compressedVideo.mp4'
 import HomeImage from '../assets/test_images/CarlsConstructionhome.jpeg'
 import ResidentialImage from '../assets/test_images/carlsconstructionfamily.jpeg'
 import CommercialImage from '../assets/test_images/carlsConstructionCommercial.jpeg'
+import CustomBodyCard from '../components/pageComponents/CustomBodyCard'
 
 const paragraphData = Array.from({ length: 10 }).map((_, i) => ({
   titleText: `Section Title ${i + 1}`,
@@ -254,6 +255,52 @@ const Home = () => {
           />
         ))}
       </BodyGrid>
+      <BodySection
+        type={BodySectionType.SINGLE}
+        leftContent={
+          <CustomBodyCard
+            // Card styles
+            CardWidth="100%"
+            CardBackground="#f5f5f5"
+            CardHeight="auto"
+
+            // Image props
+            imageSrc="/assets/images/construction-site.jpg"
+            imageAlt="Construction Site"
+            imageWidth="100%"
+            imageBorderRadius="12px"
+            imageObjectFit="cover"
+            imageMaxWidth="400px"
+            imageResponsive={true}
+
+            // Title
+            titleText="Top-Quality Construction"
+            titleTextSize="24px"
+            titleTextFont="Georgia, serif"
+            titleBold={true}
+            titleColor="#333"
+            titleTextSpacing="1.2rem" // spacing between title and paragraph
+
+            // Paragraph text
+            textText="We provide industry-leading construction services across residential and commercial sectors. From foundation to finish, our team ensures every detail meets your expectations."
+            textTextSize="16px"
+            textTextFont="Arial, sans-serif"
+            textBold={false}
+            textColor="#555"
+
+            // Button
+            buttonText="View Our Projects"
+            buttonColor="#FFB400"
+            buttonRounded={true}
+            buttonHyperlink="/projects"
+            buttonHeight="45px"
+            buttonWidth="260px"
+
+            // Image Layout
+            ImagePosition={Position.LEFT}
+          />
+        }
+      />
 </>
   );
 };
