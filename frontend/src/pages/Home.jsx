@@ -203,10 +203,11 @@ const Home = () => {
         type={BodySectionType.SINGLE}
         leftContent={
           <SimpleStepper
-            height="300px"
-            width="70%"
+            height="400px"
+            width="80%"
             backgroundColor={Theme.Modern.Background}
             color={Theme.Modern.Secondary1}
+            boxSize={300}
             elements={[
               {
                 textFont: 'Georgia',
@@ -260,7 +261,7 @@ const Home = () => {
         leftContent={
           <CustomBodyCard
             // Card styles
-            CardWidth="100%"
+            CardWidth="80%"
             CardBackground="#f5f5f5"
             CardHeight="auto"
 

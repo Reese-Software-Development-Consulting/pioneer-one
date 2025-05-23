@@ -17,7 +17,7 @@ import {
   useMediaQuery,
   useTheme
 } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PhoneIcon from '@mui/icons-material/Phone';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
@@ -57,6 +57,7 @@ const CustomHeader = ({
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const location = useLocation();
 
   const handleOpenDropdown = (event, items) => {
     setAnchorEl(event.currentTarget);
@@ -82,7 +83,6 @@ const CustomHeader = ({
 
   return (
     <Box sx={{ width: '100%' }}>
-      {/* Top Link Bar */}
       {isLinkBarVisible && !isMobile && (
         <Box
           sx={{
@@ -132,7 +132,6 @@ const CustomHeader = ({
         </Box>
       )}
 
-      {/* Main Navbar */}
       <AppBar
         position={isSticky ? 'fixed' : 'static'}
         sx={{
@@ -146,7 +145,6 @@ const CustomHeader = ({
         }}
       >
         <Toolbar sx={{ height: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          {/* Left (Logo + Title) */}
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
             {profileImage && <Avatar src={profileImage} alt="Logo" sx={{ width: 48, height: 48 }} />}
             <Typography
@@ -163,7 +161,6 @@ const CustomHeader = ({
             </Typography>
           </Box>
 
-          {/* Right (Nav Links or Menu Icon) */}
           {isMobile ? (
             <IconButton edge="end" color="inherit" onClick={toggleDrawer(true)}>
               <MenuIcon />
@@ -178,20 +175,22 @@ const CustomHeader = ({
                 gap: navBarItemSpacing,
               }}
             >
-              {navItems.map((item, index) =>
-                item.dropdownItems && item.dropdownItems.length > 0 ? (
+              {navItems.map((item, index) => {
+                const isActive = location.pathname === item.link;
+                return item.dropdownItems && item.dropdownItems.length > 0 ? (
                   <Button
                     key={index}
                     onClick={(e) => handleOpenDropdown(e, item.dropdownItems)}
                     endIcon={<ArrowDropDownIcon />}
                     sx={{
-                      color: navBarTextColor,
+                      color: isActive ? navBarItemHoverColor : navBarTextColor,
                       fontWeight: 'bold',
                       fontFamily: navBarItemFont,
                       fontSize: navBarTextSize,
+                      borderBottom: isActive ? `2px solid ${navBarItemHoverColor}` : 'none',
                       '&:hover': {
                         color: navBarItemHoverColor,
-                      }
+                      },
                     }}
                   >
                     {item.title}
@@ -202,25 +201,25 @@ const CustomHeader = ({
                     component={Link}
                     to={item.link}
                     sx={{
-                      color: navBarTextColor,
+                      color: isActive ? navBarItemHoverColor : navBarTextColor,
                       fontWeight: 'bold',
                       fontFamily: navBarItemFont,
                       fontSize: navBarTextSize,
+                      borderBottom: isActive ? `2px solid ${navBarItemHoverColor}` : 'none',
                       '&:hover': {
                         color: navBarItemHoverColor,
-                      }
+                      },
                     }}
                   >
                     {item.title}
                   </Button>
-                )
-              )}
+                );
+              })}
             </Box>
           )}
         </Toolbar>
       </AppBar>
 
-      {/* Dropdown Menu (desktop) */}
       <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleCloseDropdown}>
         {dropdownItems.map((dropItem, idx) => (
           <MenuItem key={idx} component={Link} to={dropItem.link} onClick={handleCloseDropdown}>
@@ -229,7 +228,6 @@ const CustomHeader = ({
         ))}
       </Menu>
 
-      {/* Drawer Menu (mobile) */}
       <Drawer anchor="right" open={drawerOpen} onClose={toggleDrawer(false)}>
         <Box sx={{ width: 250, p: 2 }} role="presentation" onClick={toggleDrawer(false)}>
           <List>
