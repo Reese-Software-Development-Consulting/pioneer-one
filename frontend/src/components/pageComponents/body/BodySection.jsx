@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, useTheme, useMediaQuery } from '@mui/material';
-import BodySectionTypes from '../../../enums/BodySectionTypes'; // adjust path as needed
+import BodySectionTypes from '../../../enums/BodySectionTypes';
+import Position from '../../../enums/PositionEnum';
 
 const BodySection = ({
   leftContent,
@@ -9,10 +10,26 @@ const BodySection = ({
   padding = '32px',
   alignItems = 'flex-start',
   justifyContent = 'space-between',
-  type = BodySectionTypes.DOUBLE, // default behavior
+  type = BodySectionTypes.DOUBLE,
+  position = Position.LEFT, // new prop with default
 }) => {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+
+  // Margin logic based on PositionEnum
+  let margin;
+  switch (position) {
+    case Position.CENTER:
+      margin = '0 auto';
+      break;
+    case Position.RIGHT:
+      margin = '0 0 0 auto';
+      break;
+    case Position.LEFT:
+    default:
+      margin = '0 auto 0 0';
+      break;
+  }
 
   if (type === BodySectionTypes.SINGLE) {
     return (
@@ -21,7 +38,8 @@ const BodySection = ({
           width: '100%',
           padding,
           display: 'flex',
-          justifyContent: 'center'
+          justifyContent: 'center',
+          margin,
         }}
       >
         {leftContent}
@@ -38,6 +56,7 @@ const BodySection = ({
         justifyContent,
         gap,
         padding,
+        margin,
       }}
     >
       <Box sx={{ flex: 1 }}>{leftContent}</Box>
