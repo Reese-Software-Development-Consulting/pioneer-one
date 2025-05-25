@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { Box } from '@mui/material';
-import Theme from '../enums/ColorThemes'
+import Theme from '../enums/ColorThemes';
 
-import TextBox from '../components/text/CustomTextBox'
-import HorizontalBodySection from '../components/pageComponents/body/HorizontalBodySection'
-import Dropdown from '../components/text/CustomDropdown'
-import Button from '../components/buttons/CustomButton'
-import PageHeader from '../components/pageComponents/PageHeader'
+import TextBox from '../components/text/CustomTextBox';
+import HorizontalBodySection from '../components/pageComponents/body/HorizontalBodySection';
+import Dropdown from '../components/text/CustomDropdown';
+import CustomButton from '../components/buttons/CustomButton';
+import PageHeader from '../components/pageComponents/PageHeader';
 
+import handleSendEmail from '../appService/emailService/handleSendEmail';
 
 const dropdownServiceOptions = [
   { label: 'Crack Filling', value: 'Crack Filling' },
@@ -23,6 +24,26 @@ const Contact = () => {
   const [businessName, setBusinessName] = useState('');
   const [openResponse, setOpenResponse] = useState('');
   const [selectedService, setSelectedService] = useState('');
+
+  const handleClick = async () => {
+    const formEntries = [
+      { title: 'First Name', content: firstName },
+      { title: 'Last Name', content: lastName },
+      { title: 'Business Name', content: businessName },
+      { title: 'Phone Number', content: phoneNumber },
+      { title: 'Email Address', content: email },
+      { title: 'Selected Service', content: selectedService },
+      { title: 'Message', content: openResponse }
+    ];
+
+    const result = await handleSendEmail(firstName, lastName, email, formEntries);
+
+    if (result.success) {
+      alert('Message sent!');
+    } else {
+      alert('Error: ' + result.error);
+    }
+  };
 
   return (
     <>
@@ -81,7 +102,7 @@ const Contact = () => {
           onChange={(e) => setSelectedService(e.target.value)}
           options={dropdownServiceOptions}
           width="250px"
-          height='25px'
+          height="25px"
         />
       </HorizontalBodySection>
 
@@ -89,7 +110,7 @@ const Contact = () => {
         sx={{
           width: '80%',
           margin: '0 auto',
-          padding: '32px',
+          padding: 'none',
           display: 'flex',
           justifyContent: 'center',
         }}
@@ -104,19 +125,23 @@ const Contact = () => {
           rows={6}
         />
       </Box>
-      
+
       <Box
         sx={{
           width: '80%',
           margin: '0 auto',
-          padding: '32px',
+          padding: 'none',
           display: 'flex',
           justifyContent: 'center',
         }}
       >
-        {/* add button here */}
+        <CustomButton
+          text="Send Message"
+          color={Theme.Modern.Secondary1}
+          rounded={true}
+          onClick={handleClick}
+        />
       </Box>
-
     </>
   );
 };

@@ -1,11 +1,7 @@
 import smtplib
-import os
+from email_config import EMAIL_USER, EMAIL_PASS, RECEIVER_EMAIL
 
 def send_email(name, sender_email, message):
-    EMAIL_USER = os.getenv('EMAIL_USER')
-    EMAIL_PASS = os.getenv('EMAIL_PASS')
-    RECEIVER_EMAIL = os.getenv('RECEIVER_EMAIL')
-
     subject = "New Contact Form Submission"
     body = f"From: {name} <{sender_email}>\n\n{message}"
     email_text = f"Subject: {subject}\n\n{body}"
