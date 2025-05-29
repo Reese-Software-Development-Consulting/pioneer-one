@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { Box } from '@mui/material';
 import Theme from '../enums/ColorThemes';
 
-import TextBox from '../components/text/CustomTextBox';
+import TextBox from '../components/text/TextBox';
 import HorizontalBodySection from '../components/pageComponents/body/HorizontalBodySection';
-import Dropdown from '../components/text/CustomDropdown';
-import CustomButton from '../components/buttons/CustomButton';
+import Dropdown from '../components/text/Dropdown';
+import CustomButton from '../components/buttons/Button';
 import PageHeader from '../components/pageComponents/PageHeader';
 
 import handleSendEmail from '../appService/emailService/handleSendEmail';

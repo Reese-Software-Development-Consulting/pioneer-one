@@ -1,8 +1,8 @@
 import React from 'react';
 import { Card, CardContent, Box } from '@mui/material';
-import CustomImage from '../images/CustomImage';
-import CustomText from '../text/CustomText';
-import CustomHyperLinkButton from '../buttons/CustomHyperLinkButton';
+import CustomImage from '../images/Image';
+import CustomText from '../text/Text';
+import CustomHyperLinkButton from '../buttons/HyperLinkButton';
 import ImagePositionEnum from '../../enums/PositionEnum';
 
 const CustomBodyCard = ({

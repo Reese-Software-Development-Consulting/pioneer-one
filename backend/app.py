@@ -11,12 +11,12 @@ load_dotenv()
 app = Flask(__name__)
 CORS(app)
 
-# ✅ Test route (GET /)
+# Test route (GET /)
 @app.route('/', methods=['GET'])
 def home():
     return 'Backend is running!', 200
 
-# 🚀 Contact form endpoint (POST /api/contact)
+# Contact form endpoint (POST /api/contact)
 @app.route('/api/contact', methods=['POST'])
 def contact():
     data = request.json
@@ -33,6 +33,6 @@ def contact():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
-# 🔥 Start the app
+# Start the app
 if __name__ == '__main__':
     app.run(debug=True)

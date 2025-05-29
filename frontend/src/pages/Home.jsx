@@ -4,11 +4,11 @@ import Theme from '../enums/ColorThemes'
 import BodySection from '../components/pageComponents/body/BodySection'
 import BodyGrid from '../components/pageComponents/body/BodyGrid'
 import ParagraphSection from '../components/text/ParagraphSection'
-import Image from '../components/images/CustomImage'
+import Image from '../components/images/Image'
 import PageHeader from '../components/pageComponents/PageHeader'
 import Stepper from '../components/pageComponents/Stepper'
 import SimpleStepper from '../components/pageComponents/SimpleStepper'
-import VideoComponent from '../components/images/VideoComponent'
+import VideoComponent from '../components/images/YoutubeVideo'
 
 import Position from '../enums/PositionEnum'
 import BodySectionType from '../enums/BodySectionTypes'
@@ -17,7 +17,7 @@ import HeaderVideo from '../assets/test_images/compressedVideo.mp4'
 import HomeImage from '../assets/test_images/CarlsConstructionhome.jpeg'
 import ResidentialImage from '../assets/test_images/carlsconstructionfamily.jpeg'
 import CommercialImage from '../assets/test_images/carlsConstructionCommercial.jpeg'
-import CustomBodyCard from '../components/pageComponents/CustomBodyCard'
+import CustomBodyCard from '../components/pageComponents/BodyCard'
 
 const paragraphData = Array.from({ length: 10 }).map((_, i) => ({
   titleText: `Section Title ${i + 1}`,
