@@ -6,7 +6,10 @@ import TextBox from '../components/text/TextBox';
 import HorizontalBodySection from '../components/pageComponents/body/HorizontalBodySection';
 import Dropdown from '../components/text/Dropdown';
 import CustomButton from '../components/buttons/Button';
-import PageHeader from '../components/pageComponents/PageHeader';
+import BodySection from '../components/pageComponents/body/BodySection';
+import BodySectionTypes from '../enums/BodySectionTypes';
+import Position from '../enums/PositionEnum';
+import ParagraphSection from "../components/text/ParagraphSection";
 
 import handleSendEmail from '../appService/emailService/handleSendEmail';
 
@@ -47,6 +50,25 @@ const Contact = () => {
 
   return (
     <>
+      <BodySection
+        type={BodySectionTypes.SINGLE}
+        position={Position.LEFT}
+        leftContent={
+          <ParagraphSection
+            titleText='Contact Us' 
+            paragraphText="Have a question or want to request a quote? Fill out the form below and we’ll get back to you as soon as possible."
+            paragraphTextSize="14pt"
+            titleTextSize='28pt'
+            titleTextColor="black"
+            paragraphTextColor='black'
+            showButton={false} // should be removing the button from the page, but it doesn't
+            width='80%'
+
+            dividerColor={Theme.Modern.Secondary1}
+          />
+        }
+      />
+
       <HorizontalBodySection width="80%">
         <TextBox
           title="First Name"
