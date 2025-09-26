@@ -128,25 +128,27 @@ const CustomHeader = ({
         }}
       >
         <Toolbar sx={{ height: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-            {profileImage && (
-              <Link to="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
-                <Avatar src={profileImage} alt="Logo" sx={{ width: 48, height: 48 }} />
-              </Link>
-            )}
-            <Typography
-              variant="h6"
-              component="div"
-              sx={{
-                fontFamily: titleFont,
-                color: titleColor,
-                fontWeight: 'bold',
-                fontSize: titleTextSize,
-              }}
-            >
-              {title}
-            </Typography>
-          </Box>
+          <Link to="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+              {profileImage && (
+                
+                  <Avatar src={profileImage} alt="Logo" sx={{ width: 48, height: 48 }} />
+                
+              )}
+              <Typography
+                variant="h6"
+                component="div"
+                sx={{
+                  fontFamily: titleFont,
+                  color: titleColor,
+                  fontWeight: 'bold',
+                  fontSize: titleTextSize,
+                }}
+              >
+                {title}
+              </Typography>
+            </Box>
+          </Link>
 
           {isMobile ? (
             <IconButton edge="end" color="inherit" onClick={toggleDrawer(true)}>
