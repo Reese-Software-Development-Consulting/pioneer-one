@@ -82,18 +82,55 @@ const CustomHeader = ({
           }}
         >
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, flexWrap: 'wrap' }}>
-            {locations.map((loc, idx) => (
-              <Box key={`locphone-${idx}`} sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
-                <LocationOnIcon fontSize="small" />
-                <Typography variant="body2">{loc}</Typography>
-                {phoneNumbers[idx] && (
-                  <>
-                    <PhoneIcon fontSize="small" />
-                    <Typography variant="body2">{phoneNumbers[idx]}</Typography>
-                  </>
-                )}
-              </Box>
-            ))}
+          {locations.map((loc, idx) => (
+            <Box
+              key={`locphone-${idx}`}
+              sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}
+            >
+              {/* Location link */}
+              <LocationOnIcon fontSize="small" />
+              <Typography
+                variant="body2"
+                component="a"
+                href={loc.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{
+                  color: 'inherit',
+                  textDecoration: 'none',
+                  cursor: 'pointer',
+                  '&:hover': {
+                    textDecoration: 'underline',
+                  },
+                }}
+              >
+                {loc.label}
+              </Typography>
+
+              {/* Phone number link */}
+              {phoneNumbers[idx] && (
+                <>
+                  <PhoneIcon fontSize="small" />
+                  <Typography
+                    variant="body2"
+                    component="a"
+                    href={`tel:${phoneNumbers[idx].replace(/\D/g, '')}`}
+                    sx={{
+                      color: 'inherit',
+                      textDecoration: 'none',
+                      cursor: 'pointer',
+                      '&:hover': {
+                        textDecoration: 'underline',
+                      },
+                    }}
+                  >
+                    {phoneNumbers[idx]}
+                  </Typography>
+                </>
+              )}
+            </Box>
+          ))}
+          
           </Box>
 
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, paddingRight: '10px' }}>

@@ -20,9 +20,9 @@ const MainLayout = ({ children }) => {
   ];
 
   const locations = [
-    "Northumberland, PA",
-    "Ocean City, NJ",
-    "Wilmington, NC",
+    { label: "Northumberland, PA", url: "https://maps.google.com/?q=Northumberland, PA" },
+    { label: "Ocean City, NJ", url: "https://maps.google.com/?q=Ocean City, NJ" },
+    { label: "Wilmington, NC", url: "https://maps.google.com/?q=Wilmington, NC" },
   ];
 
   const phoneNumbers = [
