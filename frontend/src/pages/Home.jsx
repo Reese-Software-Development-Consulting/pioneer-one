@@ -249,23 +249,6 @@ const Home = () => {
         }
       />
 
-      <BodyGrid rows={2} columns={3} gap="24" padding="40px" width="100%" itemWidth="200px">
-        {paragraphData.map((item, index) => (
-          <ParagraphSection
-            key={index}
-            titleText={item.titleText}
-            paragraphText={item.paragraphText}
-            buttonHyperlink={item.buttonHyperlink}
-            backgroundColor={Theme.Earthy.Background}
-            justifyContent="left"
-            height="100%"
-            width="250px"
-            titleTextColor={Theme.Earthy.Text}
-            paragraphTextColor={Theme.Earthy.Text}
-          />
-        ))}
-      </BodyGrid>
-
       <BodySection
         type={BodySectionType.SINGLE}
         leftContent={
