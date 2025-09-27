@@ -6,7 +6,13 @@ import ColorThemes from "../enums/ColorThemes";
 
 import ProfileImage from "../assets/test_images/profile-image.jpg";
 
-const MainLayout = ({ children }) => {
+const MainLayout = ({ 
+  children,
+  contentBackground = ColorThemes.Earthy.Primary2, 
+  contentTextColor = ColorThemes.Earthy.Text, 
+  contentFont = "'Poppins', sans-serif", 
+  contentPadding = "2rem" 
+}) => {
   const navItems = [
     { title: "Home", link: "/" },
     { title: "About Us", link: "/about" },
@@ -41,40 +47,49 @@ const MainLayout = ({ children }) => {
       <CustomHeader
         title="Carl's Construction"
         titleFont="'Poppins', sans-serif"
-        titleColor={ColorThemes.Modern.Text}
+        titleColor={ColorThemes.Earthy.Text}
         titleTextSize="25px"
         profileImage={ProfileImage}
         locations={locations}
         phoneNumbers={phoneNumbers}
         socialLinks={socialLinks}
         isLinkBarVisible={true}
-        topLinkBackgroundColor={ColorThemes.Modern.Primary2}
-        topLinkTextColor={ColorThemes.Modern.Primary1}
-        topLinkSocialIconHoverColor={ColorThemes.Modern.Secondary1}
+        topLinkBackgroundColor={ColorThemes.Earthy.Primary2}
+        topLinkTextColor={ColorThemes.Earthy.Primary1}
+        topLinkSocialIconHoverColor={ColorThemes.Earthy.Secondary1}
         navItems={navItems}
-        navBarBackgroundColor={ColorThemes.Modern.Primary1}
-        navBarTextColor={ColorThemes.Modern.Text}
+        navBarBackgroundColor={ColorThemes.Earthy.Primary1}
+        navBarTextColor={ColorThemes.Earthy.Text}
         navBarItemFont="'Poppins', sans-serif"
         navBarItemSpacing="6rem"
-        navBarItemHoverColor={ColorThemes.Modern.Secondary1}
+        navBarItemHoverColor={ColorThemes.Earthy.Secondary1}
         navBarTextSize="20px"
         isSticky={true}
         navLinkPosition={NavLinkPositionEnum.CENTER}
         headerHeight={`${headerHeight}px`}
       />
 
-      <main style={{ flexGrow: 1, padding: "2rem", marginTop: `${totalHeaderHeight}px` }}>
+<main
+        style={{
+          flexGrow: 1,
+          marginTop: `${totalHeaderHeight}px`,
+          padding: contentPadding,
+          backgroundColor: contentBackground,
+          color: contentTextColor,
+          fontFamily: contentFont,
+        }}
+      >
         {children}
       </main>
 
       <CustomFooter
         height="320px"
-        backgroundColor={ColorThemes.Modern.Primary2}
+        backgroundColor={ColorThemes.Earthy.Primary2}
         sticky={false}
         companyLogo={ProfileImage}
         showScrollToTopButton={true}
-        scrollToTopButtonColor={ColorThemes.Modern.Text}
-        scrollToTopArrowColor={ColorThemes.Modern.Primary1}
+        scrollToTopButtonColor={ColorThemes.Earthy.Text}
+        scrollToTopArrowColor={ColorThemes.Earthy.Primary1}
         textFont="var(--font-poppins)"
         companyName="Carl's Construction"
         isCompanyNameBold={true}
@@ -83,9 +98,9 @@ const MainLayout = ({ children }) => {
         addressLine1="P.O. Box 481179"
         addressLine2="Charlotte, NC 28269"
         showBottomTabBar={true}
-        bottomTabBarBackgroundColor={ColorThemes.Modern.Primary2}
+        bottomTabBarBackgroundColor={ColorThemes.Earthy.Primary2}
         socialLinks={socialLinks}
-        socialHoverColor={ColorThemes.Modern.Secondary1}
+        socialHoverColor={ColorThemes.Earthy.Secondary1}
       />
     </div>
   );

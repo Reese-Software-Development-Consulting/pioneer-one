@@ -28,6 +28,17 @@ const Contact = () => {
   const [openResponse, setOpenResponse] = useState('');
   const [selectedService, setSelectedService] = useState('');
 
+  const theme = Theme.Earthy;
+
+  const LAYOUT = {
+    formWidth: '80%',
+    inputWidth: '250px',
+    dropdownHeight: '25px',
+    textareaHeight: '300px',
+    gapBetweenRows: '24px',
+    horizontalSectionGap: '16px'
+  };
+
   const handleClick = async () => {
     const formEntries = [
       { title: 'First Name', content: firstName },
@@ -54,116 +65,138 @@ const Contact = () => {
         type={BodySectionTypes.SINGLE}
         position={Position.LEFT}
         leftContent={
-          <ParagraphSection
-            titleText='Contact Us' 
-            paragraphText="Have a question or want to request a quote? Fill out the form below and we’ll get back to you as soon as possible."
-            paragraphTextSize="14pt"
-            titleTextSize='28pt'
-            titleTextColor="black"
-            paragraphTextColor='black'
-            showButton={false} // should be removing the button from the page, but it doesn't
-            width='80%'
+          <Box
+            sx={{
+              width: LAYOUT.formWidth,
+              margin: '0 auto',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: LAYOUT.gapBetweenRows,
+              backgroundColor: theme.Background,
+              padding: 3,
+              borderRadius: 2,
+            }}
+          >
+            {/* Heading (now constrained to same width as form) */}
+            <Box
+              sx={{
+                width: '100%',
+                display: 'flex',
+                justifyContent: 'center',
+              }}
+            >
+              <Box sx={{ width: '100%' }}>
+                <ParagraphSection
+                  titleText="Contact Us"
+                  paragraphText="Have a question or want to request a quote? Fill out the form below and we’ll get back to you as soon as possible."
+                  paragraphTextSize="14pt"
+                  titleTextSize="28pt"
+                  titleTextColor={theme.Text}
+                  paragraphTextColor={theme.Text}
+                  showButton={false}
+                  dividerColor={theme.Secondary1}
+                />
+              </Box>
+            </Box>
 
-            dividerColor={Theme.Modern.Secondary1}
-          />
+            {/* First row */}
+            <Box
+              sx={{
+                width: '100%',
+                display: 'flex',
+                justifyContent: 'space-between',
+                gap: LAYOUT.horizontalSectionGap,
+              }}
+            >
+              <TextBox
+                title="First Name"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+                width={LAYOUT.inputWidth}
+                height="auto"
+                multiline={false}
+                rows={1}
+              />
+              <TextBox
+                title="Last Name"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+                width={LAYOUT.inputWidth}
+                height="auto"
+                multiline={false}
+                rows={1}
+              />
+              <TextBox
+                title="Business Name"
+                value={businessName}
+                onChange={(e) => setBusinessName(e.target.value)}
+                width={LAYOUT.inputWidth}
+                height="auto"
+                multiline={false}
+                rows={1}
+              />
+            </Box>
+
+            {/* Second row */}
+            <Box
+              sx={{
+                width: '100%',
+                display: 'flex',
+                justifyContent: 'space-between',
+                gap: LAYOUT.horizontalSectionGap,
+              }}
+            >
+              <TextBox
+                title="Phone Number"
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value)}
+                width={LAYOUT.inputWidth}
+                height="auto"
+                multiline={false}
+                rows={1}
+              />
+              <TextBox
+                title="Email Address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                width={LAYOUT.inputWidth}
+                height="auto"
+                multiline={false}
+                rows={1}
+              />
+              <Dropdown
+                label="Select a Service"
+                value={selectedService}
+                onChange={(e) => setSelectedService(e.target.value)}
+                options={dropdownServiceOptions}
+                width={LAYOUT.inputWidth}
+                height={LAYOUT.dropdownHeight}
+              />
+            </Box>
+
+            {/* Message */}
+            <TextBox
+              title="How Can We Help?"
+              value={openResponse}
+              onChange={(e) => setOpenResponse(e.target.value)}
+              width="100%"
+              height={LAYOUT.textareaHeight}
+              multiline={true}
+              rows={6}
+            />
+
+            {/* Button */}
+            <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+              <CustomButton
+                text="Send Message"
+                color={theme.Secondary1}
+                rounded={true}
+                onClick={handleClick}
+              />
+            </Box>
+          </Box>
         }
       />
-
-      <HorizontalBodySection width="80%">
-        <TextBox
-          title="First Name"
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
-          width="250px"
-          height="auto"
-          multiline={false}
-          rows={1}
-        />
-        <TextBox
-          title="Last Name"
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
-          width="250px"
-          height="auto"
-          multiline={false}
-          rows={1}
-        />
-        <TextBox
-          title="Business Name"
-          value={businessName}
-          onChange={(e) => setBusinessName(e.target.value)}
-          width="250px"
-          height="auto"
-          multiline={false}
-          rows={1}
-        />
-      </HorizontalBodySection>
-
-      <HorizontalBodySection width="80%">
-        <TextBox
-          title="Phone Number"
-          value={phoneNumber}
-          onChange={(e) => setPhoneNumber(e.target.value)}
-          width="250px"
-          height="auto"
-          multiline={false}
-          rows={1}
-        />
-        <TextBox
-          title="Email Address"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          width="250px"
-          height="auto"
-          multiline={false}
-          rows={1}
-        />
-        <Dropdown
-          label="Select a Service"
-          value={selectedService}
-          onChange={(e) => setSelectedService(e.target.value)}
-          options={dropdownServiceOptions}
-          width="250px"
-          height="25px"
-        />
-      </HorizontalBodySection>
-
-      <Box
-        sx={{
-          width: '80%',
-          margin: '0 auto',
-          padding: 'none',
-          display: 'flex',
-          justifyContent: 'center',
-        }}
-      >
-        <TextBox
-          title="How Can We Help?"
-          value={openResponse}
-          onChange={(e) => setOpenResponse(e.target.value)}
-          width="100%"
-          height="300px"
-          multiline={true}
-          rows={6}
-        />
-      </Box>
-
-      <Box
-        sx={{
-          width: '80%',
-          margin: '0 auto',
-          padding: 'none',
-          display: 'flex',
-          justifyContent: 'center',
-        }}
-      >
-        <CustomButton
-          text="Send Message"
-          color={Theme.Modern.Secondary1}
-          rounded={true}
-          onClick={handleClick}
-        />
-      </Box>
     </>
   );
 };
