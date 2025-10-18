@@ -1,4 +1,5 @@
-import React from 'react';
+//An Image
+
 import { Card, CardMedia, CardContent, Typography } from '@mui/material';
 
 const CustomImage = ({

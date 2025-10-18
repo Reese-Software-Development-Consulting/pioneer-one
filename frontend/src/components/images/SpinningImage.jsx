@@ -1,4 +1,5 @@
-import React from 'react';
+//A spinning image
+
 import { Card, CardMedia, CardContent, Typography } from '@mui/material';
 
 const SpinningImage = ({

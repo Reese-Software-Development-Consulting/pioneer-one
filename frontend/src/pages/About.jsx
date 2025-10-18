@@ -1,16 +1,18 @@
-// AboutPage.jsx
 import React from 'react';
 import { Box, Typography } from '@mui/material';
-import Stepper from '../components/pageComponents/Stepper'; 
-import BodySection from '../components/pageComponents/body/BodySection';
-import employee1 from '../assets/test_images/black_man_employee_stock_image.jpg';
-import Position from '../enums/PositionEnum';
-import BodySectionType from '../enums/BodySectionTypes';
+
 import Theme from '../enums/ColorThemes';
+import Position from '../enums/PositionEnum';
+import Orientation from '../enums/Orientation'
+
+import ParagraphSection from '../components/text/ParagraphSection';
+import Image from '../components/images/CustomImage';
+import Stepper from '../components/interactive/Slideshow';
+import Container from '../components/structure/Container';
+
+import employee1 from '../assets/test_images/black_man_employee_stock_image.jpg';
 import employee2 from '../assets/test_images/blackhair_man_employee_stock_image.jpg';
 import employee3 from '../assets/test_images/redhead_employee_stock_image.jpg';
-import ParagraphSection from '../components/text/ParagraphSection';
-import Image from '../components/images/Image';
 import HomeImage from '../assets/test_images/CarlsConstructionhome.jpeg';
 
 const AboutPage = () => {
@@ -114,10 +116,9 @@ const AboutPage = () => {
           Learn more about the people who make it all possible.
         </Typography>
 
-        <BodySection
-          type={BodySectionType.DOUBLE}
-          leftContent={
-            <ParagraphSection
+        <Container position={Position.CENTER} orientation={Orientation.HORIZONTAL} gap='50px' padding='20px'>
+          <ParagraphSection
+              width='50%'
               titleText="GET A QUOTE TODAY"
               paragraphText="We guarantee to do a thorough inspection of all your cracks, so we can provide the most accurate price, beating our competitors, for all your crack filling needs."
               buttonText="CONTACT US"
@@ -126,23 +127,11 @@ const AboutPage = () => {
               buttonColor={Theme.Earthy.Secondary1}
               dividerColor={Theme.Earthy.Secondary1}
             />
-          }
-          rightContent={
-            <Image
-              src={HomeImage}
-              alt="Excavator at work"
-              width="100%"
-              height="300px"
-              borderRadius="16px"
-              objectFit="cover"
-            />
-          }
-        />
-
-        <BodySection
-          type={BodySectionType.DOUBLE}
-          leftContent={
-            <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+          <Image src={HomeImage} alt="Excavator at work" width="52%" height="300px" borderRadius="16px" objectFit="cover" />
+        </Container>
+        
+        <Container position={Position.CENTER} orientation={Orientation.HORIZONTAL} gap='50px' padding='20px'>
+          <Box sx={{ display: 'flex', justifyContent: 'center' }}>
               <Stepper
                 slides={employeeSlides}
                 width="100%"
@@ -150,9 +139,8 @@ const AboutPage = () => {
                 borderRadius="12px"
               />
             </Box>
-          }
-          rightContent={
-            <ParagraphSection
+          <ParagraphSection
+              width='90%'
               titleText="MEET THE TEAM"
               paragraphText="Each of our employees is trained by expert crack inspectors, to become expert crack inspectors. They are also coached to give the best price to fill your crack."
               buttonText="CONTACT US"
@@ -161,8 +149,7 @@ const AboutPage = () => {
               buttonColor={Theme.Earthy.Secondary1}
               dividerColor={Theme.Earthy.Secondary1}
             />
-          }
-        />
+        </Container>
       </Box>
     </Box>
   );

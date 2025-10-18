@@ -1,6 +1,6 @@
-import React from 'react';
+//Component that allows you to display youtube videos easily
 
-const VideoComponent = ({
+const YoutubeVideo = ({
   youtubeUrl,
   width = '100%',
   height = '400px',
@@ -32,4 +32,4 @@ const VideoComponent = ({
   );
 };
 
-export default VideoComponent;
+export default YoutubeVideo;

@@ -1,6 +1,6 @@
 import React from "react";
-import CustomHeader from "../components/pageComponents/headers/Header";
-import CustomFooter from "../components/pageComponents/footers/Footer";
+import CustomHeader from "../components/headers/CustomHeader";
+import CustomFooter from "../components/footers/CustomFooter";
 import NavLinkPositionEnum from "../enums/PositionEnum";
 import ColorThemes from "../enums/ColorThemes";
 

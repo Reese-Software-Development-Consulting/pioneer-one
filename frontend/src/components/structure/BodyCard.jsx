@@ -1,11 +1,12 @@
-import React from 'react';
+//Component that allows you to easily create and customize a card with an image, text, and button, or all
+
 import { Card, CardContent, Box } from '@mui/material';
-import CustomImage from '../images/Image';
-import CustomText from '../text/Text';
-import CustomHyperLinkButton from '../buttons/HyperLinkButton';
+import CustomImage from '../images/CustomImage';
+import CustomText from '../text/CustomText';
+import CustomHyperLinkButton from '../buttons/CustomButton';
 import ImagePositionEnum from '../../enums/PositionEnum';
 
-const CustomBodyCard = ({
+const BodyCard = ({
   // Card styles
   CardHeight = 'auto',
   CardWidth = '100%',
@@ -42,7 +43,7 @@ const CustomBodyCard = ({
   titleTextFont,
   titleBold,
   titleColor,
-  titleTextSpacing = '1rem', // 🆕 spacing between title and paragraph
+  titleTextSpacing = '1rem', // spacing between title and paragraph
 
   // Paragraph text props
   textText,
@@ -185,4 +186,4 @@ else if (ImagePosition === ImagePositionEnum.RIGHT) {
   );
 };
 
-export default CustomBodyCard;
+export default BodyCard;

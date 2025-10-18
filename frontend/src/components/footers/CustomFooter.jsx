@@ -1,8 +1,9 @@
-import React from 'react';
+//Interactive Custom Footer
+
 import { Box, Typography, IconButton, Fade, useMediaQuery, useTheme } from '@mui/material';
 import { KeyboardArrowUp } from '@mui/icons-material';
-import { iconMap } from '../../../utils/iconRegistry';
-import SocialIconLink from '../../buttons/SocialIconLink';
+import { iconMap } from '../../utils/iconRegistry';
+import SocialIconLink from '../buttons/IconLink';
 
 const CustomFooter = ({
   height = '300px',

@@ -1,7 +1,8 @@
-import React from 'react';
+//Footer that displays a row of icon links that can have hyperlinks attached
+
 import Box from '@mui/material/Box';
-import SocialIconLink from '../../buttons/SocialIconLink';
-import { iconMap } from '../../../utils/iconRegistry';
+import SocialIconLink from '../buttons/IconLink';
+import { iconMap } from '../../utils/iconRegistry';
 
 const LinkFooter = ({ backgroundColor = '#000', iconColor = '#aaa', hoverColor = '#fff', icons = [] }) => {
   return (

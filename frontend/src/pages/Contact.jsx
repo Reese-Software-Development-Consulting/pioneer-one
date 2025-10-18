@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
 import { Box } from '@mui/material';
 import Theme from '../enums/ColorThemes';
+import Position from '../enums/PositionEnum';
+import Orientation from '../enums/Orientation'
 
 import TextBox from '../components/text/TextBox';
-import HorizontalBodySection from '../components/pageComponents/body/HorizontalBodySection';
 import Dropdown from '../components/text/Dropdown';
-import CustomButton from '../components/buttons/Button';
-import BodySection from '../components/pageComponents/body/BodySection';
-import BodySectionTypes from '../enums/BodySectionTypes';
-import Position from '../enums/PositionEnum';
+import CustomButton from '../components/buttons/CustomButton';
 import ParagraphSection from "../components/text/ParagraphSection";
+import Container from '../components/structure/Container';
 
 import handleSendEmail from '../appService/emailService/handleSendEmail';
 
@@ -61,11 +60,8 @@ const Contact = () => {
 
   return (
     <>
-      <BodySection
-        type={BodySectionTypes.SINGLE}
-        position={Position.LEFT}
-        leftContent={
-          <Box
+    <Container position={Position.CENTER} orientation={Orientation.HORIZONTAL} gap='100px' padding='20px'>
+      <Box
             sx={{
               width: LAYOUT.formWidth,
               margin: '0 auto',
@@ -180,7 +176,6 @@ const Contact = () => {
               value={openResponse}
               onChange={(e) => setOpenResponse(e.target.value)}
               width="100%"
-              height={LAYOUT.textareaHeight}
               multiline={true}
               rows={6}
             />
@@ -195,8 +190,8 @@ const Contact = () => {
               />
             </Box>
           </Box>
-        }
-      />
+    </Container>
+
     </>
   );
 };

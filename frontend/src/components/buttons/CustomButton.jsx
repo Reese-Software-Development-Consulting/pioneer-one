@@ -1,28 +1,38 @@
-import React from 'react';
+//Essentially just an mui button that simplifies using hyperlinks
+
 import Button from '@mui/material/Button';
 
-const CustomHyperLinkButton = ({ 
-  color = 'primary', 
-  rounded = false, 
-  square = false, 
-  hyperlink = '#', 
+const CustomButton = ({ 
+  color = 'primary',
+  rounded = false,
+  square = false,
+  text = 'Click Me',
   height = '40px',
   width = '300px',
-  text = 'Click Me' 
+  onClick = () => {},
+  hyperlink = null
 }) => {
+
   const borderRadius = rounded ? '50px' : square ? '0px' : '8px';
 
   const handleClick = () => {
-    window.location.href = hyperlink;
+    if (hyperlink) {
+      window.location.href = hyperlink;
+    } else {
+      onClick();
+    }
   };
 
   return (
-    <Button variant="contained" onClick={handleClick}
-      sx={{ height: height, 
+    <Button 
+      variant="contained" 
+      onClick={handleClick}
+      sx={{ 
+        height: height, 
         width: width, 
         backgroundColor: color, 
         borderRadius: borderRadius, 
-        padding: '12px 24px',
+        padding: '12px 24px', 
         fontSize: '1rem', 
         maxWidth: '90vw', 
         textTransform: 'none',
@@ -34,4 +44,4 @@ const CustomHyperLinkButton = ({
   );
 };
 
-export default CustomHyperLinkButton;
+export default CustomButton;

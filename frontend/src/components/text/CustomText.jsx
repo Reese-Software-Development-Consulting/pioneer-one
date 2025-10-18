@@ -1,3 +1,5 @@
+//Simple Text Components
+
 import React from 'react';
 import { Typography } from '@mui/material';
 
@@ -6,11 +8,12 @@ const CustomText = ({
   textFont = 'Arial', 
   bold = false, 
   text = 'defaultText', 
-  color = 'white' 
+  color = 'white',
+  textAlign = 'center'
 }) => {
   
   return (
-    <Typography sx={{ fontSize: textSize, fontFamily: textFont, fontWeight: bold ? 'bold' : 'normal', textAlign: 'center', color: color }} >
+    <Typography sx={{ fontSize: textSize, fontFamily: textFont, fontWeight: bold ? 'bold' : 'normal', textAlign: textAlign, color: color }} >
       {text}
     </Typography>
   );

@@ -1,3 +1,5 @@
+//Text Box Component that allows user to select a date using a mini calendar
+
 import React from 'react';
 import { TextField, Typography, Box } from '@mui/material';
 

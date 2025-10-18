@@ -1,3 +1,5 @@
+//Custom header that includes a nav bar with optional dropdown menu, icons, phone links, location links, 
+
 import React, { useState } from 'react';
 import { AppBar, Toolbar, Typography, Box, Avatar, Button, Menu, MenuItem, IconButton, Drawer, List, ListItem, ListItemButton, ListItemText, useMediaQuery, useTheme } from '@mui/material';
 import { Link, useLocation } from 'react-router-dom';
@@ -6,9 +8,9 @@ import PhoneIcon from '@mui/icons-material/Phone';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import MenuIcon from '@mui/icons-material/Menu';
 
-import { iconMap } from '../../../utils/iconRegistry';
-import SocialIconLink from '../../buttons/SocialIconLink';
-import NavLinkPositionEnum from '../../../enums/PositionEnum';
+import { iconMap } from '../../utils/iconRegistry';
+import SocialIconLink from '../buttons/IconLink';
+import NavLinkPositionEnum from '../../enums/PositionEnum';
 
 const CustomHeader = ({
   title = '',
@@ -33,6 +35,8 @@ const CustomHeader = ({
   isSticky = false,
   navLinkPosition = NavLinkPositionEnum.CENTER,
   headerHeight = '80px',
+  logoWidth = 48,
+  logoHeight = 48,
 }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [dropdownItems, setDropdownItems] = useState([]);
@@ -82,55 +86,48 @@ const CustomHeader = ({
           }}
         >
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, flexWrap: 'wrap' }}>
-          {locations.map((loc, idx) => (
-            <Box
-              key={`locphone-${idx}`}
-              sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}
-            >
-              {/* Location link */}
-              <LocationOnIcon fontSize="small" />
-              <Typography
-                variant="body2"
-                component="a"
-                href={loc.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                sx={{
-                  color: 'inherit',
-                  textDecoration: 'none',
-                  cursor: 'pointer',
-                  '&:hover': {
-                    textDecoration: 'underline',
-                  },
-                }}
+            {locations.map((loc, idx) => (
+              <Box
+                key={`locphone-${idx}`}
+                sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}
               >
-                {loc.label}
-              </Typography>
+                <LocationOnIcon fontSize="small" />
+                <Typography
+                  variant="body2"
+                  component="a"
+                  href={loc.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  sx={{
+                    color: 'inherit',
+                    textDecoration: 'none',
+                    cursor: 'pointer',
+                    '&:hover': { textDecoration: 'underline' },
+                  }}
+                >
+                  {loc.label}
+                </Typography>
 
-              {/* Phone number link */}
-              {phoneNumbers[idx] && (
-                <>
-                  <PhoneIcon fontSize="small" />
-                  <Typography
-                    variant="body2"
-                    component="a"
-                    href={`tel:${phoneNumbers[idx].replace(/\D/g, '')}`}
-                    sx={{
-                      color: 'inherit',
-                      textDecoration: 'none',
-                      cursor: 'pointer',
-                      '&:hover': {
-                        textDecoration: 'underline',
-                      },
-                    }}
-                  >
-                    {phoneNumbers[idx]}
-                  </Typography>
-                </>
-              )}
-            </Box>
-          ))}
-          
+                {phoneNumbers[idx] && (
+                  <>
+                    <PhoneIcon fontSize="small" />
+                    <Typography
+                      variant="body2"
+                      component="a"
+                      href={`tel:${phoneNumbers[idx].replace(/\D/g, '')}`}
+                      sx={{
+                        color: 'inherit',
+                        textDecoration: 'none',
+                        cursor: 'pointer',
+                        '&:hover': { textDecoration: 'underline' },
+                      }}
+                    >
+                      {phoneNumbers[idx]}
+                    </Typography>
+                  </>
+                )}
+              </Box>
+            ))}
           </Box>
 
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, paddingRight: '10px' }}>
@@ -168,9 +165,11 @@ const CustomHeader = ({
           <Link to="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
               {profileImage && (
-                
-                  <Avatar src={profileImage} alt="Logo" sx={{ width: 48, height: 48 }} />
-                
+                <Avatar
+                  src={profileImage}
+                  alt="Logo"
+                  sx={{ width: logoWidth, height: logoHeight }}
+                />
               )}
               <Typography
                 variant="h6"
@@ -214,9 +213,7 @@ const CustomHeader = ({
                       fontFamily: navBarItemFont,
                       fontSize: navBarTextSize,
                       borderBottom: isActive ? `2px solid ${navBarItemHoverColor}` : 'none',
-                      '&:hover': {
-                        color: navBarItemHoverColor,
-                      },
+                      '&:hover': { color: navBarItemHoverColor },
                     }}
                   >
                     {item.title}
@@ -232,9 +229,7 @@ const CustomHeader = ({
                       fontFamily: navBarItemFont,
                       fontSize: navBarTextSize,
                       borderBottom: isActive ? `2px solid ${navBarItemHoverColor}` : 'none',
-                      '&:hover': {
-                        color: navBarItemHoverColor,
-                      },
+                      '&:hover': { color: navBarItemHoverColor },
                     }}
                   >
                     {item.title}

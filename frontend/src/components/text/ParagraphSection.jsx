@@ -1,7 +1,7 @@
-import React from 'react';
+//Paragraph Section
+
 import { Box, Typography, Button, Divider } from '@mui/material';
 
-// Simulated enum mapping
 const justifyMap = {
   left: 'flex-start',
   center: 'center',

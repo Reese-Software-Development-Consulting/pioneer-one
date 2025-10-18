@@ -1,4 +1,5 @@
-import React from 'react';
+//Simple stepper component
+
 import { Box, Typography } from '@mui/material';
 
 const SimpleStepper = ({
@@ -7,7 +8,7 @@ const SimpleStepper = ({
   backgroundColor = '#fff',
   color = '#d8a47f',
   elements = [],
-  boxSize = 200, // New parameter: controls size of square box
+  boxSize = 200,
 }) => {
   return (
     <Box
@@ -18,7 +19,7 @@ const SimpleStepper = ({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        padding: '80px 20px', // ✅ increased vertical padding
+        padding: '80px 20px',
         boxSizing: 'border-box',
       }}
     >

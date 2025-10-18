@@ -1,4 +1,5 @@
-import React from 'react';
+//Component that allows you to easily create a page header with either a video, image, background, with a title and/or subtitle
+
 import PropTypes from 'prop-types';
 
 const PageHeader = ({
@@ -6,6 +7,10 @@ const PageHeader = ({
   titleFont = 'Arial, sans-serif',
   titleColor = '#fff',
   titleBold = false,
+  subtitleText,
+  subtitleFont = 'Arial, sans-serif',
+  subtitleColor = '#fff',
+  subtitleBold = false,
   img = '',
   video = '',
   backgroundColor = '',
@@ -88,17 +93,30 @@ const PageHeader = ({
     textAlign: 'center'
   };
 
+  const subtitleStyle = {
+    fontFamily: subtitleFont,
+    color: subtitleColor,
+    fontWeight: subtitleBold ? 'bold' : 'normal',
+    fontSize: '1.5rem',
+    zIndex: 2,
+    textAlign: 'center'
+  }
+
   return (
     <div style={{ position: 'relative', width: '100%', height, overflow: 'hidden' }}>
       {renderBackground()}
       <div style={{
-        position: 'relative',
-        height: '100%',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center'
+        position: "relative",
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        textAlign: "center",
+        gap: "0",    
       }}>
         <h1 style={titleStyle}>{titleText}</h1>
+        <h4 style={subtitleStyle}>{subtitleText}</h4>
       </div>
     </div>
   );
@@ -109,6 +127,10 @@ PageHeader.propTypes = {
   titleFont: PropTypes.string,
   titleColor: PropTypes.string,
   titleBold: PropTypes.bool,
+  subtitleBold: PropTypes.bool,
+  subtitleColor: PropTypes.string,
+  subtitleFont: PropTypes.string,
+  subtitleText: PropTypes.string,
   img: PropTypes.string,
   video: PropTypes.string,
   backgroundColor: PropTypes.string,
