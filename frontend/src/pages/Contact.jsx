@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Box } from '@mui/material';
+import { Box, useMediaQuery } from '@mui/material';
 import Theme from '../enums/ColorThemes';
 import Position from '../enums/PositionEnum';
-import Orientation from '../enums/Orientation'
+import Orientation from '../enums/Orientation';
 
 import TextBox from '../components/text/TextBox';
 import Dropdown from '../components/text/Dropdown';
@@ -28,15 +28,7 @@ const Contact = () => {
   const [selectedService, setSelectedService] = useState('');
 
   const theme = Theme.Earthy;
-
-  const LAYOUT = {
-    formWidth: '80%',
-    inputWidth: '250px',
-    dropdownHeight: '25px',
-    textareaHeight: '300px',
-    gapBetweenRows: '24px',
-    horizontalSectionGap: '16px'
-  };
+  const isMobile = useMediaQuery('(max-width:900px)');
 
   const handleClick = async () => {
     const formEntries = [
@@ -58,141 +50,81 @@ const Contact = () => {
     }
   };
 
+  const rowStyle = {
+    display: 'flex',
+    flexDirection: isMobile ? 'column' : 'row',
+    gap: '16px',
+    width: '100%',
+    justifyContent: isMobile ? 'flex-start' : 'space-between',
+  };
+
+  const inputWidth = isMobile ? '100%' : '32%';
+
   return (
-    <>
-    <Container position={Position.CENTER} orientation={Orientation.HORIZONTAL} gap='100px' padding='20px'>
+    <Container
+      position={Position.CENTER}
+      orientation={Orientation.VERTICAL}
+      gap="40px"
+      padding="20px"
+      style={{ width: '100%', justifyContent: 'center', alignItems: 'center' }}
+    >
       <Box
-            sx={{
-              width: LAYOUT.formWidth,
-              margin: '0 auto',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: LAYOUT.gapBetweenRows,
-              backgroundColor: theme.Background,
-              padding: 3,
-              borderRadius: 2,
-            }}
-          >
-            {/* Heading (now constrained to same width as form) */}
-            <Box
-              sx={{
-                width: '100%',
-                display: 'flex',
-                justifyContent: 'center',
-              }}
-            >
-              <Box sx={{ width: '100%' }}>
-                <ParagraphSection
-                  titleText="Contact Us"
-                  paragraphText="Have a question or want to request a quote? Fill out the form below and we’ll get back to you as soon as possible."
-                  paragraphTextSize="14pt"
-                  titleTextSize="28pt"
-                  titleTextColor={theme.Text}
-                  paragraphTextColor={theme.Text}
-                  showButton={false}
-                  dividerColor={theme.Secondary1}
-                />
-              </Box>
-            </Box>
+        sx={{
+          width: '100%',
+          maxWidth: '1100px',          // desktop container width
+          px: { xs: 2, sm: 3 },
+          py: { xs: 4, sm: 5 },
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '24px',
+          backgroundColor: theme.Background,
+          borderRadius: 2,
+          boxSizing: 'border-box',
+          mx: 'auto',                   // center horizontally
+        }}
+      >
+        {/* Heading */}
+        <ParagraphSection
+          titleText="Contact Us"
+          paragraphText="Have a question or want to request a quote? Fill out the form below and we’ll get back to you as soon as possible."
+          paragraphTextSize="14pt"
+          titleTextSize="28pt"
+          titleTextColor={theme.Text}
+          paragraphTextColor={theme.Text}
+          showButton={false}
+          dividerColor={theme.Secondary1}
+        />
 
-            {/* First row */}
-            <Box
-              sx={{
-                width: '100%',
-                display: 'flex',
-                justifyContent: 'space-between',
-                gap: LAYOUT.horizontalSectionGap,
-              }}
-            >
-              <TextBox
-                title="First Name"
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
-                width={LAYOUT.inputWidth}
-                height="auto"
-                multiline={false}
-                rows={1}
-              />
-              <TextBox
-                title="Last Name"
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
-                width={LAYOUT.inputWidth}
-                height="auto"
-                multiline={false}
-                rows={1}
-              />
-              <TextBox
-                title="Business Name"
-                value={businessName}
-                onChange={(e) => setBusinessName(e.target.value)}
-                width={LAYOUT.inputWidth}
-                height="auto"
-                multiline={false}
-                rows={1}
-              />
-            </Box>
+        {/* First row */}
+        <Box sx={rowStyle}>
+          <TextBox title="First Name" value={firstName} onChange={(e) => setFirstName(e.target.value)} width={inputWidth} multiline={false} />
+          <TextBox title="Last Name" value={lastName} onChange={(e) => setLastName(e.target.value)} width={inputWidth} multiline={false} />
+          <TextBox title="Business Name" value={businessName} onChange={(e) => setBusinessName(e.target.value)} width={inputWidth} multiline={false} />
+        </Box>
 
-            {/* Second row */}
-            <Box
-              sx={{
-                width: '100%',
-                display: 'flex',
-                justifyContent: 'space-between',
-                gap: LAYOUT.horizontalSectionGap,
-              }}
-            >
-              <TextBox
-                title="Phone Number"
-                value={phoneNumber}
-                onChange={(e) => setPhoneNumber(e.target.value)}
-                width={LAYOUT.inputWidth}
-                height="auto"
-                multiline={false}
-                rows={1}
-              />
-              <TextBox
-                title="Email Address"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                width={LAYOUT.inputWidth}
-                height="auto"
-                multiline={false}
-                rows={1}
-              />
-              <Dropdown
-                label="Select a Service"
-                value={selectedService}
-                onChange={(e) => setSelectedService(e.target.value)}
-                options={dropdownServiceOptions}
-                width={LAYOUT.inputWidth}
-                height={LAYOUT.dropdownHeight}
-              />
-            </Box>
+        {/* Second row */}
+        <Box sx={rowStyle}>
+          <TextBox title="Phone Number" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} width={inputWidth} multiline={false} />
+          <TextBox title="Email Address" value={email} onChange={(e) => setEmail(e.target.value)} width={inputWidth} multiline={false} />
+          <Dropdown
+            label="Select a Service"
+            value={selectedService}
+            onChange={(e) => setSelectedService(e.target.value)}
+            options={dropdownServiceOptions}
+            width={inputWidth}
+            height="40px"
+          />
+        </Box>
 
-            {/* Message */}
-            <TextBox
-              title="How Can We Help?"
-              value={openResponse}
-              onChange={(e) => setOpenResponse(e.target.value)}
-              width="100%"
-              multiline={true}
-              rows={6}
-            />
+        {/* Message */}
+        <TextBox title="How Can We Help?" value={openResponse} onChange={(e) => setOpenResponse(e.target.value)} width="100%" multiline={true} rows={6} />
 
-            {/* Button */}
-            <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-              <CustomButton
-                text="Send Message"
-                color={theme.Secondary1}
-                rounded={true}
-                onClick={handleClick}
-              />
-            </Box>
-          </Box>
+        {/* Button */}
+        <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
+          <CustomButton text="Send Message" color={theme.Secondary1} rounded={true} onClick={handleClick} />
+        </Box>
+      </Box>
     </Container>
-
-    </>
   );
 };
 

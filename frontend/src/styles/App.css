@@ -36,3 +36,34 @@
     transform: rotate(360deg);
   }
 }
+
+/* Responsive design */
+@media (max-width: 1024px) {
+  .App {
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .App {
+    padding: 0 10px;
+  }
+
+  h1, h2, h3 {
+    font-size: 90%;
+  }
+
+  p {
+    font-size: 95%;
+  }
+}
+
+@media (max-width: 480px) {
+  h1, h2, h3 {
+    font-size: 80%;
+  }
+
+  p {
+    font-size: 90%;
+  }
+}
