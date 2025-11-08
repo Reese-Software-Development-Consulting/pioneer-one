@@ -1,5 +1,4 @@
-//Dropdown Component
-
+// Dropdown Component
 import React from 'react';
 import {
   Box,
@@ -17,22 +16,21 @@ const CustomDropdown = ({
   font = 'Arial',
   bold = false,
   height = '40px',
-  width = '300px',
+  width = '100%',   // default 100% so parent controls sizing
   color = 'black',
   error = false,
   errorMessage = '',
   value,
   onChange,
   onBlur,
+  sx = {},
 }) => {
   return (
-    <Box>
+    <Box sx={{ width, ...sx, boxSizing: 'border-box' }}>
       <FormControl
         fullWidth
         error={error}
-        sx={{
-          width,
-        }}
+        sx={{ width: '100%' }}
       >
         <InputLabel
           sx={{
@@ -50,6 +48,7 @@ const CustomDropdown = ({
           onChange={onChange}
           onBlur={onBlur}
           label={label}
+          fullWidth
           sx={{
             fontSize,
             fontFamily: font,

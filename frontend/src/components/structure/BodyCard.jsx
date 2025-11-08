@@ -1,5 +1,3 @@
-//Component that allows you to easily create and customize a card with an image, text, and button, or all
-
 import { Card, CardContent, Box } from '@mui/material';
 import CustomImage from '../images/CustomImage';
 import CustomText from '../text/CustomText';
@@ -43,7 +41,7 @@ const BodyCard = ({
   titleTextFont,
   titleBold,
   titleColor,
-  titleTextSpacing = '1rem', // spacing between title and paragraph
+  titleTextSpacing = '1rem',
 
   // Paragraph text props
   textText,
@@ -64,6 +62,10 @@ const BodyCard = ({
   // Layout positioning
   ImagePosition = ImagePositionEnum.CENTER,
 }) => {
+  // ------------------------------
+  // COMPONENTS
+  // ------------------------------
+
   const imageComponent = (
     <CustomImage
       src={imageSrc}
@@ -128,48 +130,76 @@ const BodyCard = ({
     </Box>
   ) : null;
 
+  // ------------------------------
+  // LAYOUT HANDLING
+  // ------------------------------
+
+  const verticalLayout = (
+    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+      {imageComponent}
+      {titleComponent}
+      {textComponent}
+      {buttonComponent}
+    </Box>
+  );
+
+  const horizontalLayout = (reverse = false) => (
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: reverse ? 'row-reverse' : 'row',
+        flexWrap: 'wrap',
+        gap: 3,
+        alignItems: 'center',
+        justifyContent: 'center', // ✅ centers horizontally in the card
+        width: '100%',            // ✅ ensures container spans full card width
+        boxSizing: 'border-box',
+      }}
+    >
+      {/* IMAGE COLUMN */}
+      <Box
+        sx={{
+          flex: { xs: '1 1 100%', md: '0 0 40%' },
+          maxWidth: { xs: '100%', md: '40%' },
+          minWidth: 0,
+        }}
+      >
+        {imageComponent}
+      </Box>
+
+      {/* CONTENT COLUMN */}
+      <Box
+        sx={{
+          flex: { xs: '1 1 100%', md: '1 1 60%' },
+          maxWidth: { xs: '100%', md: '60%' },
+          minWidth: 0,
+          display: 'flex',
+          flexDirection: 'column',
+        }}
+      >
+        {titleComponent}
+        {textComponent}
+        {buttonComponent}
+      </Box>
+    </Box>
+  );
+
   let contentLayout;
 
-  if (ImagePosition === ImagePositionEnum.CENTER) {
-    contentLayout = (
-      <>
-        {imageComponent}
-        {titleComponent}
-        {textComponent}
-        {buttonComponent}
-      </>
-    );
- // LEFT image layout
-} else if (ImagePosition === ImagePositionEnum.LEFT) {
-  contentLayout = (
-    <Box sx={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', gap: 2 }}>
-      <Box sx={{ flex: '0 0 auto', maxWidth: imageMaxWidth || '40%' }}>
-        {imageComponent}
-      </Box>
-      <Box sx={{ flex: '1 1 0%', display: 'flex', flexDirection: 'column' }}>
-        {titleComponent}
-        {textComponent}
-        {buttonComponent}
-      </Box>
-    </Box>
-  );
-}
+  switch (ImagePosition) {
+    case ImagePositionEnum.LEFT:
+      contentLayout = horizontalLayout(false);
+      break;
+    case ImagePositionEnum.RIGHT:
+      contentLayout = horizontalLayout(true);
+      break;
+    default:
+      contentLayout = verticalLayout;
+  }
 
-// RIGHT image layout
-else if (ImagePosition === ImagePositionEnum.RIGHT) {
-  contentLayout = (
-    <Box sx={{ display: 'flex', flexDirection: 'row-reverse', flexWrap: 'wrap', gap: 2 }}>
-      <Box sx={{ flex: '0 0 auto', maxWidth: imageMaxWidth || '40%' }}>
-        {imageComponent}
-      </Box>
-      <Box sx={{ flex: '1 1 0%', display: 'flex', flexDirection: 'column' }}>
-        {titleComponent}
-        {textComponent}
-        {buttonComponent}
-      </Box>
-    </Box>
-  );
-}
+  // ------------------------------
+  // RETURN
+  // ------------------------------
 
   return (
     <Card
@@ -177,11 +207,12 @@ else if (ImagePosition === ImagePositionEnum.RIGHT) {
         width: CardWidth,
         height: CardHeight,
         background: CardBackground,
-        padding: 2,
+        padding: 3,
         borderRadius: '16px',
+        overflow: 'hidden',
       }}
     >
-      <CardContent>{contentLayout}</CardContent>
+      <CardContent sx={{ padding: 0 }}>{contentLayout}</CardContent>
     </Card>
   );
 };

@@ -1,4 +1,4 @@
-//Paragraph Section
+// ParagraphSection.js
 
 import { Box, Typography, Button, Divider } from '@mui/material';
 
@@ -42,15 +42,17 @@ const ParagraphSection = ({
   return (
     <Box
       sx={{
-        height,
+        height: 'auto',        // always auto so text can expand
         width,
         backgroundColor,
         padding: '24px',
         display: 'flex',
         flexDirection: 'column',
         alignItems: alignment,
+        boxSizing: 'border-box',
       }}
     >
+      {/* Title */}
       <Typography
         variant="h5"
         component="h2"
@@ -61,11 +63,14 @@ const ParagraphSection = ({
           fontWeight: titleTextBold ? 'bold' : 'normal',
           padding: titlePadding,
           textAlign: justifyContent,
+          whiteSpace: 'normal',   // allow wrapping
+          wordBreak: 'break-word',
         }}
       >
         {titleText}
       </Typography>
 
+      {/* Divider */}
       <Divider
         sx={{
           width: dividerWidth,
@@ -76,6 +81,7 @@ const ParagraphSection = ({
         }}
       />
 
+      {/* Paragraph */}
       <Typography
         sx={{
           fontFamily: paragraphTextFont,
@@ -84,11 +90,15 @@ const ParagraphSection = ({
           padding: paragraphPadding,
           textAlign: justifyContent,
           maxWidth: '700px',
+          whiteSpace: 'normal',     // allow text to wrap
+          overflow: 'visible',      // ensure text is not cut
+          wordBreak: 'break-word',  // break long words if needed
         }}
       >
         {paragraphText}
       </Typography>
 
+      {/* Button */}
       {showButton && (
         <Button
           variant="contained"
