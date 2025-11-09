@@ -1,6 +1,5 @@
-// ParagraphSection.js
-
 import { Box, Typography, Button, Divider } from '@mui/material';
+import { Link } from 'react-router-dom'; // <-- import Link for client-side routing
 
 const justifyMap = {
   left: 'flex-start',
@@ -42,7 +41,7 @@ const ParagraphSection = ({
   return (
     <Box
       sx={{
-        height: 'auto',        // always auto so text can expand
+        height,
         width,
         backgroundColor,
         padding: '24px',
@@ -63,7 +62,7 @@ const ParagraphSection = ({
           fontWeight: titleTextBold ? 'bold' : 'normal',
           padding: titlePadding,
           textAlign: justifyContent,
-          whiteSpace: 'normal',   // allow wrapping
+          whiteSpace: 'normal',
           wordBreak: 'break-word',
         }}
       >
@@ -90,9 +89,9 @@ const ParagraphSection = ({
           padding: paragraphPadding,
           textAlign: justifyContent,
           maxWidth: '700px',
-          whiteSpace: 'normal',     // allow text to wrap
-          overflow: 'visible',      // ensure text is not cut
-          wordBreak: 'break-word',  // break long words if needed
+          whiteSpace: 'normal',
+          overflow: 'visible',
+          wordBreak: 'break-word',
         }}
       >
         {paragraphText}
@@ -102,6 +101,8 @@ const ParagraphSection = ({
       {showButton && (
         <Button
           variant="contained"
+          component={Link}
+          to={buttonHyperlink}
           sx={{
             backgroundColor: buttonColor,
             height: buttonHeight,
@@ -118,7 +119,6 @@ const ParagraphSection = ({
               opacity: 0.9,
             },
           }}
-          href={buttonHyperlink}
         >
           {buttonText}
         </Button>
