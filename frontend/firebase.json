@@ -1,9 +1,23 @@
 {
   "hosting": {
     "public": "build",
-    "ignore": ["**/.*", "**/node_modules/**", "firebase.json"],
+    "ignore": [
+      "**/.*",
+      "**/node_modules/**",
+      "firebase.json"
+    ],
     "rewrites": [
-      { "source": "/api/**", "run": { "serviceId": "app-backend", "region": "us-east1" } }
+      {
+        "source": "/api/**",
+        "run": {
+          "serviceId": "app-backend",
+          "region": "us-east1"
+        }
+      },
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
     ]
   }
 }
