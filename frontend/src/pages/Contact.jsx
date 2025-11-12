@@ -112,7 +112,7 @@ const Contact = () => {
             onChange={(e) => setSelectedService(e.target.value)}
             options={dropdownServiceOptions}
             width={inputWidth}
-            height="40px"
+            height="24px"
           />
         </Box>
 

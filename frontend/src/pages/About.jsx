@@ -1,9 +1,9 @@
 import React from 'react';
-import { Box, Typography, useMediaQuery } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 
 import Theme from '../enums/ColorThemes';
 import Position from '../enums/PositionEnum';
-import Orientation from '../enums/Orientation';
+import Orientation from '../enums/Orientation'
 
 import ParagraphSection from '../components/text/ParagraphSection';
 import Image from '../components/images/CustomImage';
@@ -16,8 +16,6 @@ import employee3 from '../assets/test_images/redhead_employee_stock_image.jpg';
 import HomeImage from '../assets/test_images/CarlsConstructionhome.jpeg';
 
 const AboutPage = () => {
-  const isMobile = useMediaQuery('(max-width:900px)');
-
   const employeeSlides = [
     {
       backgroundImage: employee1,
@@ -93,8 +91,6 @@ const AboutPage = () => {
   return (
     <Box sx={{ backgroundColor: Theme.Earthy.Background }}>
       <Box sx={{ padding: '80px 20px', textAlign: 'center' }}>
-
-        {/* -------- HEADER -------- */}
         <Typography
           variant="h2"
           sx={{
@@ -106,7 +102,6 @@ const AboutPage = () => {
         >
           About Us
         </Typography>
-
         <Typography
           variant="body1"
           sx={{
@@ -121,84 +116,40 @@ const AboutPage = () => {
           Learn more about the people who make it all possible.
         </Typography>
 
-        {/* -------- SECTION #1 -------- */}
-        <Container
-          position={Position.CENTER}
-          orientation={isMobile ? Orientation.VERTICAL : Orientation.HORIZONTAL}
-          gap={isMobile ? '30px' : '50px'}
-          padding="20px"
-          sx={{
-            width: '100%',
-            maxWidth: '1100px',
-            margin: '0 auto',
-            alignItems: 'flex-start', // <-- allow children to grow
-            textAlign: isMobile ? 'center' : 'left',
-            boxSizing: 'border-box',
-          }}
-        >
-          <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
-            <ParagraphSection
-              width="100%"
+        <Container position={Position.CENTER} orientation={Orientation.HORIZONTAL} gap='50px' padding='20px'>
+          <ParagraphSection
+              width='50%'
               titleText="GET A QUOTE TODAY"
-              paragraphText="We guarantee to do a thorough inspection of all your cracks, so we can provide the most accurate price possible, tailored to your unique needs."
+              paragraphText="We guarantee to do a thorough inspection of all your cracks, so we can provide the most accurate price, beating our competitors, for all your crack filling needs."
               buttonText="CONTACT US"
               justifyContent={Position.LEFT}
               buttonHyperlink="/contact"
               buttonColor={Theme.Earthy.Secondary1}
               dividerColor={Theme.Earthy.Secondary1}
             />
-          </Box>
-
-          <Box sx={{ width: '100%' }}>
-            <Image
-              src={HomeImage}
-              alt="Excavator at work"
-              width="100%"
-              height="300px"
-              borderRadius="16px"
-              objectFit="cover"
-            />
-          </Box>
+          <Image src={HomeImage} alt="Excavator at work" width="52%" height="300px" borderRadius="16px" objectFit="cover" />
         </Container>
-
-        {/* -------- SECTION #2 -------- */}
-        <Container
-          position={Position.CENTER}
-          orientation={isMobile ? Orientation.VERTICAL : Orientation.HORIZONTAL}
-          gap={isMobile ? '30px' : '50px'}
-          padding="20px"
-          sx={{
-            width: '100%',
-            maxWidth: '1100px',
-            margin: '0 auto',
-            alignItems: 'flex-start', // <-- allow children to grow
-            textAlign: isMobile ? 'center' : 'left',
-            boxSizing: 'border-box',
-          }}
-        >
-          <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-            <Stepper
-              slides={employeeSlides}
-              width="100%"
-              height={isMobile ? "300px" : "400px"}
-              borderRadius="12px"
-            />
-          </Box>
-
-          <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
-            <ParagraphSection
-              width="100%"
+        
+        <Container position={Position.CENTER} orientation={Orientation.HORIZONTAL} gap='50px' padding='20px'>
+          <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+              <Stepper
+                slides={employeeSlides}
+                width="100%"
+                height="400px"
+                borderRadius="12px"
+              />
+            </Box>
+          <ParagraphSection
+              width='90%'
               titleText="MEET THE TEAM"
-              paragraphText="Each of our employees is trained by industry experts and passionate about delivering the highest quality work to every client. We value collaboration, creativity, and commitment."
+              paragraphText="Each of our employees is trained by expert crack inspectors, to become expert crack inspectors. They are also coached to give the best price to fill your crack."
               buttonText="CONTACT US"
               justifyContent={Position.LEFT}
               buttonHyperlink="/contact"
               buttonColor={Theme.Earthy.Secondary1}
               dividerColor={Theme.Earthy.Secondary1}
             />
-          </Box>
         </Container>
-
       </Box>
     </Box>
   );
